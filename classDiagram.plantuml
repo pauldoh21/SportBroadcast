@@ -1,0 +1,91 @@
+@startuml classDiagram
+
+Interface Team {
+    players: List<Player>
+    getPlayers(): List<Player>
+}
+
+Class MultiPlayerTeam {
+
+}
+
+CLass SinglePlayerTeam {
+
+}
+
+Team <|-- MultiPlayerTeam
+Team <|-- SinglePlayerTeam
+
+Class FootballTeam {
+    +players: List<FootballPlayer>
+    +getPlayers(): List<FootballPlayer>
+}
+
+Class BasketballTeam {
+    +players: List<BasketballPlayer>
+    +getPlayers(): List<BasketballPlayer>
+}
+
+MultiPlayerTeam <|-- FootballTeam
+MultiPlayerTeam <|-- BasketballTeam
+
+Class TennisTeam {
+    +players: List<TennisPlayer>
+    +getPlayers(): List<TennisPlayer>
+}
+
+Class GolfTeam {
+    +players: List<GolfPlayer>
+    +getPlayers(): List<GolfPlayer>
+}
+
+SinglePlayerTeam <|-- TennisTeam
+SinglePlayerTeam <|-- GolfTeam
+
+Interface Player {
+    +forename: String
+    +surname: String
+    +middleNames: List<String>
+    +preferredName: Integer
+}
+
+Class FootballPlayer {
+    +forename: String
+    +surname: String
+    +middleNames: List<String>
+    +preferredName: Integer
+    +position: String
+}
+
+Class BasketballPlayer {
+    +forename: String
+    +surname: String
+    +middleNames: List<String>
+    +preferredName: Integer
+    +height: Float
+}
+
+Class TennisPlayer {
+    +forename: String
+    +surname: String
+    +middleNames: List<String>
+    +preferredName: Integer
+    +handedness: String
+}
+
+Class GolfPlayer {
+    +forename: String
+    +surname: String
+    +middleNames: List<String>
+    +preferredName: Integer
+    +handicap: Float
+}
+
+Player <|-- FootballPlayer
+Player <|-- BasketballPlayer
+Player <|-- TennisPlayer
+Player <|-- GolfPlayer
+
+Team "1" o-- "many" Player : has >
+
+@enduml
