@@ -1,9 +1,24 @@
 import java.util.List;
 
-public interface Team {
+public abstract class Team {
+    String name;
+    List<Player> players;
+    static int maxNumberOfPlayers;
 
-    String GetName();
+    String getName() {
+        return name;
+    }
 
-    List<Player> GetPlayers();
-    
+    List<Player> getPlayers() {
+        return players;
+    }
+
+    void addPlayer(Player player) {
+        if ((players.size() < maxNumberOfPlayers) || (maxNumberOfPlayers == 0)) {
+            players.add(player);
+        } else {
+            throw new IllegalStateException("Team is already full");
+        }
+    }
+
 }

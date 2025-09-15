@@ -1,18 +1,5 @@
-import java.util.List;
+public class SinglePlayerTeam extends Team {
 
-public class SinglePlayerTeam implements Team {
-    
-    private String name;
-    private Player player;
+    static final int maxNumberOfPlayers = 1;
 
-    @Override
-    public String GetName() {
-        return name;
-    }
-
-    @Override
-    public List<Player> GetPlayers() {
-        return List.of(player);
-    }
-    
 }
