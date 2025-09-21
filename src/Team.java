@@ -5,6 +5,11 @@ public abstract class Team {
     List<Player> players;
     static int maxNumberOfPlayers;
 
+    public Team(String name) {
+        this.name = name;
+        this.players = new java.util.ArrayList<>();
+    }
+
     String getName() {
         return name;
     }
