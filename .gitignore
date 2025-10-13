@@ -26,6 +26,10 @@ replay_pid*
 # Exclude FlatLaf
 !flatlaf-*.jar
 
+# Exclude plantuml
+*.puml
+*.plantuml
+
 ### IntelliJ IDEA ###
 .idea
 *.iws
