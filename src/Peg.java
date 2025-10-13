@@ -1,5 +1,19 @@
+enum Position {
+    GOALKEEPER,
+    CENTRE_BACK,
+    FULL_BACK,
+    WING_BACK,
+    CENTRAL_DEFENSIVE_MIDFIELDER,
+    CENTRAL_MIDFIELDER,
+    ATTACKING_MIDFIELDER,
+    WINGER,
+    SECOND_STRIKER,
+    STRIKER
+}
+
 public class Peg {
     private Player player;
+    private Position position;
     // Percentage peg moved on x axis
     private double xAdjustment;
     // Percentage peg moved on y axis
