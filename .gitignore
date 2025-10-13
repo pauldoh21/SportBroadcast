@@ -25,3 +25,7 @@ replay_pid*
 
 # Exclude FlatLaf
 !flatlaf-*.jar
+
+# Exclude plantuml
+*.puml
+*.plantuml
