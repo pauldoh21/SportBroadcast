@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Formation {
-    Team team;
+    private Team team;
     private ArrayList<Line> lines;
     private String formationNotation;
     boolean includesGoalkeeper = true;
@@ -27,7 +27,7 @@ public class Formation {
         int playerIndex = 0;
 
         if (includesGoalkeeper) {
-            Line goalkeeperLine = new Line(lineSpacing, 1);
+            Line goalkeeperLine = new Line(1);
             goalkeeperLine.addPlayer(team.getPlayers().get(playerIndex + 1), 0);
             lines.add(goalkeeperLine);
             playerIndex++;
@@ -35,7 +35,7 @@ public class Formation {
 
         for (int i = 0; i < segments.length; i++) {
             int playersInLine = Integer.parseInt(segments[i]);
-            Line line = new Line(lineSpacing * (i + 2), playersInLine);
+            Line line = new Line(playersInLine);
             for (int j = 0; j < playersInLine; j++) {
                 if (playerIndex < team.getPlayers().size()) {
                     line.addPlayer(team.getPlayers().get(playerIndex + 1), j);
@@ -57,6 +57,22 @@ public class Formation {
         } else {
             this.formationNotation = formationNotation;
         }
+    }
+
+    public String getFormation() {
+        return formationNotation;
+    }
+
+    public ArrayList<Line> getLines() {
+        return lines;
+    }
+
+    public Team getTeam() {
+        return team;
+    }
+
+    public ArrayList<Player> getSubstitutes() {
+        return substitutes;
     }
 
     public void printFormation() {

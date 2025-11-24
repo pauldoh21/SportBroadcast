@@ -2,26 +2,43 @@ import java.util.List;
 
 public class Line {
     private List<Peg> pegs;
-    private double yPosition; // Y position of the line on the field (0.0 to 1.0)
+    private double yOffset; // Y position of the line on the field (0.0 to 1.0)
+    private List<Position> availablePositions;
 
-    public Line(double yPosition, int numberOfPegs) {
-        this.yPosition = yPosition;
+    public Line(double numberOfPegs) {
+        this.yOffset = 0;
         this.pegs = new java.util.ArrayList<>();
+        this.availablePositions = new java.util.ArrayList<>();
+        setAvailablePositions(null);
         for (int i = 0; i < numberOfPegs; i++) {
             pegs.add(new Peg());
         }
+    }
+
+    public void setAvailablePositions(List<Position> positions) {
+        if (positions == null) {
+            for (Position pos : Position.values()) {
+                availablePositions.add(pos);
+            }
+        } else {
+            this.availablePositions = positions;
+        }
+    }
+
+    public List<Position> getAvailablePositions() {
+        return availablePositions;
     }
 
     public List<Peg> getPegs() {
         return pegs;
     }
 
-    public double getyPosition() {
-        return yPosition;
+    public double getYOffset() {
+        return yOffset;
     }
 
-    public void setyPosition(double yPosition) {
-        this.yPosition = yPosition;
+    public void setYOffset(double yPosition) {
+        this.yOffset = yPosition;
     }
 
     public void addPlayer(Player player, int pegIndex) {
