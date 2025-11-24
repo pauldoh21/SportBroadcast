@@ -1,16 +1,3 @@
-enum Position {
-    GOALKEEPER,
-    CENTRE_BACK,
-    FULL_BACK,
-    WING_BACK,
-    CENTRAL_DEFENSIVE_MIDFIELDER,
-    CENTRAL_MIDFIELDER,
-    ATTACKING_MIDFIELDER,
-    WINGER,
-    SECOND_STRIKER,
-    STRIKER
-}
-
 public class Peg {
     private Player player;
     private Position position;
@@ -28,6 +15,7 @@ public class Peg {
         this.player = player;
         this.xAdjustment = 0;
         this.yAdjustment = 0;
+        this.position = null;
     }
 
     public Player getPlayer() {
@@ -36,6 +24,12 @@ public class Peg {
 
     public void setPlayer(Player player) {
         this.player = player;
+    }
+
+    public void swapPlayer(Peg otherPlayer) {
+        Player temp = this.player;
+        this.player = otherPlayer.getPlayer();
+        otherPlayer.setPlayer(temp);
     }
 
     public double getxAdjustment() {
@@ -52,5 +46,13 @@ public class Peg {
 
     public void setyAdjustment(double yAdjustment) {
         this.yAdjustment = yAdjustment;
+    }
+
+    public Position getPosition() {
+        return position;
+    }
+
+    public void setPosition(Position position) {
+        this.position = position;
     }
 }

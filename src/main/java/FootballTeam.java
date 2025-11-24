@@ -16,7 +16,9 @@ public class FootballTeam extends MultiPlayerTeam {
 
     public void generatePlayers() {
         for (int i = 0; i < sideSize + 5; i++) {
-            addPlayer(new FootballPlayer("First" + (i + 1), java.util.Collections.emptyList(), "Last" + (i + 1), PreferredName.FIRST_LAST));
+            Player player = new FootballPlayer("First" + (i + 1), java.util.Collections.emptyList(), "Last" + (i + 1), PreferredName.FIRST_LAST);
+            player.setTeam(this);
+            addPlayer(player);
         }
     }
 

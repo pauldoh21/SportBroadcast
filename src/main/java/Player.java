@@ -15,6 +15,8 @@ public abstract class Player {
     List<String> middleNames;
     String surname;
     PreferredName preferredName;
+    private Team team;
+    // TODO: Add profile picture for player
 
     Player(String forename, List<String> middleNames, String surname, PreferredName preferredName) {
         this.forename = forename;
@@ -28,6 +30,14 @@ public abstract class Player {
         } else {
             this.preferredName = preferredName;
         }
+    }
+
+    public Team getTeam() {
+        return team;
+    }
+
+    void setTeam(Team team) {
+        this.team = team;
     }
 
     String getName() {
@@ -44,5 +54,17 @@ public abstract class Player {
             case F_LAST -> forename.charAt(0) + ". " + surname;
             case F_M_LAST -> forename.charAt(0) + ". " + (middleNames.size() > 0 ? middleNames.get(0).charAt(0) + ". " : "") + surname;
         };
+    }
+
+    public int getShirtNumber() {
+        if (team != null) {
+            return team.getPlayerNumber(this);
+        }
+        return 0;
+    }
+
+    @Override
+    public String toString() {
+        return getPreferredName();
     }
 }
