@@ -1,3 +1,5 @@
+import java.net.ConnectException;
+
 import io.obswebsocket.community.client.OBSRemoteController;
 
 public class OBSController {
@@ -16,15 +18,19 @@ public class OBSController {
 	}
 
 	private void createOBSRemoteController() {
-		this.obsRemoteController = OBSRemoteController.builder()
-			.autoConnect(false)
-			.host(host)
-			.port(port)
-			.password(password)
-			.lifecycle()
-			.onReady(this::onReady)
-			.and()
-			.build();
+		try {
+			this.obsRemoteController = OBSRemoteController.builder()
+					.autoConnect(false)
+					.host(host)
+					.port(port)
+					.password(password)
+					.lifecycle()
+					.onReady(this::onReady)
+					.and()
+					.build();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void connect() {
@@ -34,5 +40,6 @@ public class OBSController {
 	private void onReady() {
 		System.out.println("OBS Remote Controller is ready and connected.");
 	}
+
 
 }
