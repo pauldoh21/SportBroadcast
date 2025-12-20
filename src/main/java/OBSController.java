@@ -41,5 +41,8 @@ public class OBSController {
 		System.out.println("OBS Remote Controller is ready and connected.");
 	}
 
+	public OBSRemoteController getObsRemoteController() {
+		return obsRemoteController;
+	}
 
 }
