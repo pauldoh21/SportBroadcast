@@ -6,13 +6,15 @@ public class SplitNode extends LayoutNode {
     LayoutNode first;
     LayoutNode second;
     boolean isVertical;
+    boolean isLocked = false;
 
-    public SplitNode(LayoutNode first, LayoutNode second, boolean isVertical, double weight) {
+    public SplitNode(LayoutNode first, LayoutNode second, boolean isVertical, double weight, boolean isLocked) {
         super();
         this.first = first;
         this.second = second;
         this.isVertical = isVertical;
         this.weight = weight;
+        this.isLocked = isLocked;
         createLayout();
     }
 
@@ -23,6 +25,7 @@ public class SplitNode extends LayoutNode {
                 second
         );
         splitPane.setResizeWeight(weight);
+        splitPane.setEnabled(!isLocked);
         this.setLayout(new java.awt.BorderLayout());
         this.add(splitPane, java.awt.BorderLayout.CENTER);
     }
