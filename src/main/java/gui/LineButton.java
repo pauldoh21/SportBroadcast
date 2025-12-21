@@ -1,4 +1,7 @@
+package gui;
 import javax.swing.*;
+
+import formation.Line;
 
 public class LineButton extends JButton {
     Line line;

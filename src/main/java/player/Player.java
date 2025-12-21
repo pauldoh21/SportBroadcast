@@ -1,14 +1,7 @@
+package player;
 import java.util.List;
 
-enum PreferredName {
-    FIRST,
-    LAST,
-    MIDDLE,
-    FIRST_LAST,
-    FIRST_MIDDLE_LAST,
-    F_LAST,
-    F_M_LAST
-}
+import team.Team;
 
 public abstract class Player {
     String forename;
@@ -36,15 +29,15 @@ public abstract class Player {
         return team;
     }
 
-    void setTeam(Team team) {
+    public void setTeam(Team team) {
         this.team = team;
     }
 
-    String getName() {
+    public String getName() {
         return forename + " " + String.join(" ", middleNames) + " " + surname;
     }
 
-    String getPreferredName() {
+    public String getPreferredName() {
         return switch (preferredName) {
             case FIRST -> forename;
             case LAST -> surname;

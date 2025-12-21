@@ -1,4 +1,7 @@
+package team;
 import java.util.HashMap;
+
+import player.Player;
 
 public abstract class Team {
     String name;
@@ -10,15 +13,15 @@ public abstract class Team {
         this.players = new java.util.HashMap<>();
     }
 
-    String getName() {
+    public String getName() {
         return name;
     }
 
-    HashMap<Integer, Player> getPlayers() {
+    public HashMap<Integer, Player> getPlayers() {
         return players;
     }
 
-    void addPlayer(Player player) {
+    public void addPlayer(Player player) {
 
         if ((players.size() < maxNumberOfPlayers) || (maxNumberOfPlayers == 0)) {
             int number = getFirstNumber();
@@ -39,7 +42,7 @@ public abstract class Team {
         return max + 1;
     }
 
-    void setPlayerNumber(int currentNumber, int newNumber) {
+    public void setPlayerNumber(int currentNumber, int newNumber) {
         if (!players.containsKey(currentNumber)) {
             throw new IllegalArgumentException("No player with number " + currentNumber + " in team " + name);
         }
@@ -51,7 +54,7 @@ public abstract class Team {
         System.out.println("Changed player " + player.getPreferredName() + " number from " + currentNumber + " to " + newNumber);
     }
 
-    int getPlayerNumber(Player player) {
+    public int getPlayerNumber(Player player) {
         for (var entry : players.entrySet()) {
             if (entry.getValue().equals(player)) {
                 return entry.getKey();

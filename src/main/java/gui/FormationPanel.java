@@ -1,4 +1,10 @@
+package gui;
 import javax.swing.*;
+
+import formation.Formation;
+import formation.Line;
+import formation.Peg;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;

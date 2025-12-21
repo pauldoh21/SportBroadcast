@@ -1,3 +1,9 @@
+package app;
+
+import gui.FormationEditor;
+import obs.OBSController;
+import team.FootballTeam;
+
 public class App {
     public static void main(String[] args) {
         FootballTeam team1 = new FootballTeam("Team A");

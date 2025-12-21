@@ -1,6 +1,10 @@
+package gui;
 import java.awt.*;
 import java.util.List;
 import javax.swing.*;
+
+import formation.Position;
+import player.Player;
 
 public class PegInfoPanel extends JPanel {
     private PegButton pegButton;

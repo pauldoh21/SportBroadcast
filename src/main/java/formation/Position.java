@@ -1,3 +1,4 @@
+package formation;
 public enum Position {
     GOALKEEPER("GK"),
     CENTRE_BACK("CB"),

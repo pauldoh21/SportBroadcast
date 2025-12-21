@@ -1,3 +1,7 @@
+package formation;
+
+import player.Player;
+
 public class Peg {
     private Player player;
     private Position position;

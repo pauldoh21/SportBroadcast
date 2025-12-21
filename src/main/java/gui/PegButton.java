@@ -1,4 +1,8 @@
+package gui;
 import javax.swing.*;
+
+import formation.Peg;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;

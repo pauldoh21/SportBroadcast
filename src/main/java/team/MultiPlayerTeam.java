@@ -1,3 +1,4 @@
+package team;
 public class MultiPlayerTeam extends Team {
     int sideSize;
     

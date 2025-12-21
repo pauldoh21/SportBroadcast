@@ -1,4 +1,9 @@
+package formation;
 import java.util.ArrayList;
+
+import player.Player;
+import team.MultiPlayerTeam;
+import team.Team;
 
 public class Formation {
     private Team team;
@@ -8,7 +13,7 @@ public class Formation {
     int numberOfPlayers;
     private ArrayList<Player> substitutes;
 
-    Formation(MultiPlayerTeam team) {
+    public Formation(MultiPlayerTeam team) {
         this.numberOfPlayers = team.getSideSize();
         this.team = team;
     }

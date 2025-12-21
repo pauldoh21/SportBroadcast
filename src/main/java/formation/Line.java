@@ -1,4 +1,7 @@
+package formation;
 import java.util.List;
+
+import player.Player;
 
 public class Line {
     private List<Peg> pegs;

@@ -1,4 +1,8 @@
+package gui;
 import com.formdev.flatlaf.*;
+
+import formation.Formation;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -15,7 +19,7 @@ public class FormationEditor {
 
     private int eastPanelWidth = 300;
 
-    FormationEditor(Formation formation) {
+    public FormationEditor(Formation formation) {
         this.formation = formation;
         FlatDarkLaf.setup();
         show();

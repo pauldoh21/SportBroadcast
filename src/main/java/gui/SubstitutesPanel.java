@@ -1,4 +1,8 @@
+package gui;
 import javax.swing.*;
+
+import player.Player;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;

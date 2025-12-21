@@ -1,3 +1,4 @@
+package obs;
 import java.net.ConnectException;
 
 import io.obswebsocket.community.client.OBSRemoteController;

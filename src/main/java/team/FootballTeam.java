@@ -1,8 +1,14 @@
+package team;
+
+import formation.Formation;
+import player.FootballPlayer;
+import player.Player;
+import player.PreferredName;
 
 public class FootballTeam extends MultiPlayerTeam {
     Formation formation;
 
-    FootballTeam(String name) {
+    public FootballTeam(String name) {
         super(name);
         // TODO: make 5s, 7s and 11s classes
         sideSize = 11;
