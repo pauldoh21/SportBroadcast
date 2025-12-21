@@ -30,6 +30,7 @@ public class LineButton extends JButton {
         if (e.getID() == java.awt.event.MouseEvent.MOUSE_DRAGGED) {
             double panelHeight = this.getParent().getHeight();
             double newY = (e.getYOnScreen() - this.getParent().getLocationOnScreen().y - (initialY * panelHeight));
+            System.out.println("New Y: " + newY + "\nLocationOnScreen " + this.getParent().getLocationOnScreen().y + "\nInitial Y: " + initialY + "\nPanel Height: " + panelHeight);
             line.setYOffset(newY);
             FormationPanel parentPanel = (FormationPanel) this.getParent();
             parentPanel.redrawFormation();

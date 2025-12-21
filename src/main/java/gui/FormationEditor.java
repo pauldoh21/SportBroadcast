@@ -10,8 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class FormationEditor {
-    JFrame frame;
+public class FormationEditor extends JPanel {
     Formation formation;
     FormationPanel formationPanel;
     JTextField formationInput;
@@ -21,18 +20,16 @@ public class FormationEditor {
 
     public FormationEditor(Formation formation) {
         this.formation = formation;
-        FlatDarkLaf.setup();
-        show();
+        initialize();
     }
 
     //TODO: Refactor to use relative sizing instead of pixel sizes
-    void show() {
-        JFrame frame = new JFrame("Formation Editor");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(800, 600);
-        frame.setLocationRelativeTo(null); // Center the frame on the screen
+    void initialize() {
+        //setTitle("Formation Editor");
+        //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //setSize(800, 600);
         BorderLayout layout = new BorderLayout();
-        frame.setLayout(layout);
+        setLayout(layout);
 
         formationPanel = new FormationPanel(formation);
         formationPanel.setMinimumSize(new Dimension(400, 0));
@@ -40,7 +37,7 @@ public class FormationEditor {
         // Create a container for the PegInfoPanel and controlPanel
         JPanel eastPanel = new JPanel();
         eastPanel.setLayout(new BorderLayout());
-        eastPanel.setPreferredSize(new Dimension(eastPanelWidth, frame.getHeight()));
+        eastPanel.setPreferredSize(new Dimension(eastPanelWidth, getHeight()));
 
         // Add PegInfoPanel to the top of the eastPanel
         pegInfoPanel = new PegInfoPanel();
@@ -64,14 +61,13 @@ public class FormationEditor {
 
         eastPanel.add(controlPanel, BorderLayout.SOUTH);
 
-
         JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, formationPanel, eastPanel);
         splitPane.setOrientation(JSplitPane.HORIZONTAL_SPLIT);
-        splitPane.setDividerLocation(frame.getWidth() - eastPanelWidth);
+        splitPane.setDividerLocation(getWidth() - eastPanelWidth);
         splitPane.setResizeWeight(1.0);
-        frame.add(splitPane, BorderLayout.CENTER);
+        add(splitPane, BorderLayout.CENTER);
 
-        frame.setVisible(true);
+        setVisible(true);
 
         formationPanel.initialiseButtons();
     }
@@ -84,7 +80,7 @@ public class FormationEditor {
                 formationPanel.initialiseButtons();
                 formationPanel.redrawFormation();
             } catch (IllegalArgumentException ex) {
-                JOptionPane.showMessageDialog(frame, "Invalid formation: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Invalid formation: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 formationInput.setText(formation.getFormation());
             }
         }
