@@ -4,6 +4,7 @@ import javax.swing.*;
 import gui.Layout.LayoutNode;
 import gui.Layout.PanelNode;
 import gui.Layout.SplitNode;
+import java.awt.*;
 
 public class BaseWindow extends JFrame {
     private LayoutNode layout;
@@ -15,6 +16,16 @@ public class BaseWindow extends JFrame {
         setLocationRelativeTo(null); // Center the frame on the screen
 
         JMenuBar menuBar = new JMenuBar();
+
+        JLabel iconLabel = new JLabel();
+        ImageIcon originalIcon = new ImageIcon("ico192.png");
+        Image scaledImage = originalIcon.getImage().getScaledInstance(16, 16, Image.SCALE_SMOOTH);
+        iconLabel.setIcon(new ImageIcon(scaledImage));
+        menuBar.add(iconLabel);
+
+        // Replace the JLabel spacer with Box.createHorizontalStrut for reliable spacing
+        menuBar.add(Box.createHorizontalStrut(6)); // Add 8px horizontal space
+
         menuBar.add(new JMenu("File"));
         menuBar.add(new JMenu("Edit"));
         menuBar.add(new JMenu("View"));

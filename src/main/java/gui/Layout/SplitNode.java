@@ -26,6 +26,7 @@ public class SplitNode extends LayoutNode {
         );
         splitPane.setResizeWeight(weight);
         splitPane.setEnabled(!isLocked);
+        splitPane.setDividerSize(isLocked ? 0 : 5);
         this.setLayout(new java.awt.BorderLayout());
         this.add(splitPane, java.awt.BorderLayout.CENTER);
     }
