@@ -8,9 +8,12 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
+import gui.Layout.LayoutNode;
+import gui.Layout.SplitNode;
+import gui.Layout.PanelNode;
 
 
-public class FormationEditor extends JPanel {
+public class FormationEditor extends LayoutNode {
     Formation formation;
     FormationPanel formationPanel;
     JTextField formationInput;
@@ -28,8 +31,9 @@ public class FormationEditor extends JPanel {
         //setTitle("Formation Editor");
         //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //setSize(800, 600);
-        BorderLayout layout = new BorderLayout();
-        setLayout(layout);
+
+        BorderLayout bLayout = new BorderLayout();
+        setLayout(bLayout);
 
         formationPanel = new FormationPanel(formation);
         formationPanel.setMinimumSize(new Dimension(400, 0));
@@ -61,13 +65,14 @@ public class FormationEditor extends JPanel {
 
         eastPanel.add(controlPanel, BorderLayout.SOUTH);
 
-        JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, formationPanel, eastPanel);
+        /* JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, formationPanel, eastPanel);
         splitPane.setOrientation(JSplitPane.HORIZONTAL_SPLIT);
         splitPane.setDividerLocation(getWidth() - eastPanelWidth);
         splitPane.setResizeWeight(1.0);
-        add(splitPane, BorderLayout.CENTER);
+        add(splitPane, BorderLayout.CENTER); */
 
-        setVisible(true);
+        SplitNode layout = new SplitNode(new PanelNode(formationPanel), new PanelNode(eastPanel), false, 0.7, false);
+        add(layout, BorderLayout.CENTER);
 
         formationPanel.initialiseButtons();
     }

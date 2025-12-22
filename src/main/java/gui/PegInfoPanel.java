@@ -7,7 +7,7 @@ import formation.Position;
 import player.Player;
 
 public class PegInfoPanel extends JPanel {
-    private PegButton pegButton;
+    private PegButtonSelectable pegButton;
     private JLabel profilePicture;
     private JLabel nameLabel;
     private JLabel nameDisplayLabel;
@@ -56,7 +56,7 @@ public class PegInfoPanel extends JPanel {
         updateInfo();
     }
 
-    public void setPegButton(PegButton pegButton) {
+    public void setPegButton(PegButtonSelectable pegButton) {
         if (pegButton == null) {
             positionComboBox.removeAllItems();
         }

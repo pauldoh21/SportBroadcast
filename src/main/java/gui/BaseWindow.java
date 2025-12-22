@@ -31,7 +31,7 @@ public class BaseWindow extends JFrame {
         menuBar.add(new JMenu("View"));
         this.setJMenuBar(menuBar);
 
-        createTestLayout();
+        //createTestLayout();
     }
 
     public LayoutNode getLayoutNode() {

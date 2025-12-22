@@ -17,7 +17,10 @@ public class App {
 
         BaseWindow window = new BaseWindow("Sport Broadcast");
 
-        //window.add(new FormationEditor(team1.getFormation()));
+        FormationEditor editor = new FormationEditor(team1.getFormation());
+
+        window.add(editor);
+        window.setLayoutNode(editor);
 
         window.setVisible(true);
     }
