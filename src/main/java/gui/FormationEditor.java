@@ -50,8 +50,8 @@ public class FormationEditor extends LayoutNode {
         formationPanel.setPegInfoPanel(pegInfoPanel);
 
         // Add SubstitutionsPanel to the center of the eastPanel
-        SubstitutesPanel substitutionsPanel = new SubstitutesPanel(formation.getSubstitutes());
-        eastPanel.add(substitutionsPanel, BorderLayout.CENTER);
+        /* SubstitutesPanel substitutionsPanel = new SubstitutesPanel(formation.getSubstitutes());
+        eastPanel.add(substitutionsPanel, BorderLayout.CENTER); */
 
         // Add controlPanel to the bottom of the eastPanel
         JPanel controlPanel = new JPanel();
@@ -71,8 +71,8 @@ public class FormationEditor extends LayoutNode {
         splitPane.setResizeWeight(1.0);
         add(splitPane, BorderLayout.CENTER); */
 
-        SplitNode layout = new SplitNode(new PanelNode(formationPanel), new PanelNode(eastPanel), false, 0.7, false);
-        add(layout, BorderLayout.CENTER);
+        //SplitNode layout = new SplitNode(new PanelNode(formationPanel), new PanelNode(eastPanel), false, 0.7, false);
+        //add(layout, BorderLayout.CENTER);
 
         formationPanel.initialiseButtons();
     }

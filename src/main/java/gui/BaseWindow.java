@@ -30,8 +30,6 @@ public class BaseWindow extends JFrame {
         menuBar.add(new JMenu("Edit"));
         menuBar.add(new JMenu("View"));
         this.setJMenuBar(menuBar);
-
-        //createTestLayout();
     }
 
     public LayoutNode getLayoutNode() {
@@ -45,40 +43,4 @@ public class BaseWindow extends JFrame {
         this.repaint();
     }
 
-    private void createTestLayout() {
-        SplitNode layout = new SplitNode(
-                new SplitNode(
-                    new PanelNode(),
-                    new PanelNode(),
-                    true,
-                    0.5,
-                    false
-                ) {},
-                new SplitNode(
-                    new SplitNode(
-                        new PanelNode() {},
-                        new PanelNode(),
-                        true,
-                        0.9,
-                        true
-                    ), 
-                    new SplitNode(
-                        new PanelNode(), 
-                        new PanelNode(), 
-                        true, 
-                        0.5,
-                        false),
-                    false,
-                    0.8,
-                    false),
-                false,
-                0.2,
-                false
-        );
-
-        this.layout = layout;
-        if (layout != null) {
-            this.setContentPane(layout);
-        }
-    }
 }

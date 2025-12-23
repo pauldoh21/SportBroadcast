@@ -3,7 +3,11 @@ package app;
 import com.formdev.flatlaf.FlatDarkLaf;
 
 import gui.BaseWindow;
+import gui.FormationDisplay;
 import gui.FormationEditor;
+import gui.FormationEditor2;
+import gui.Layout.PanelNode;
+import gui.Layout.SplitNode;
 import obs.OBSController;
 import team.FootballTeam;
 
@@ -17,10 +21,11 @@ public class App {
 
         BaseWindow window = new BaseWindow("Sport Broadcast");
 
-        FormationEditor editor = new FormationEditor(team1.getFormation());
+        FormationEditor2 editor = new FormationEditor2(team1.getFormation());
 
-        window.add(editor);
-        window.setLayoutNode(editor);
+        SplitNode layout = new SplitNode(new SplitNode(new PanelNode(), editor, false, 0.1, false), new PanelNode(), true, 0.95, true);
+
+        window.setLayoutNode(layout);
 
         window.setVisible(true);
     }
