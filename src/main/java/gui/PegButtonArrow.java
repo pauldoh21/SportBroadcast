@@ -8,10 +8,10 @@ enum Direction {
 }
 
 public class PegButtonArrow extends JButton {
-    PegButton pegButton;
+    PegButtonSelectable pegButton;
     Direction direction;
 
-    public PegButtonArrow(PegButton pegButton, Direction direction) {
+    public PegButtonArrow(PegButtonSelectable pegButton, Direction direction) {
         this.pegButton = pegButton;
         this.direction = direction;
         setLabel();

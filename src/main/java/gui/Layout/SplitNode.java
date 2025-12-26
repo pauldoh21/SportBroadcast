@@ -1,12 +1,16 @@
 package gui.Layout;
 
 import javax.swing.*;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+import java.awt.event.HierarchyEvent;
 
 public class SplitNode extends LayoutNode {
     LayoutNode first;
     LayoutNode second;
     boolean isVertical;
     boolean isLocked = false;
+    JSplitPane splitPane;
 
     public SplitNode(LayoutNode first, LayoutNode second, boolean isVertical, double weight, boolean isLocked) {
         super();
@@ -19,15 +23,29 @@ public class SplitNode extends LayoutNode {
     }
 
     public void createLayout() {
-        JSplitPane splitPane = new JSplitPane(
+        splitPane = new JSplitPane(
                 isVertical ? JSplitPane.VERTICAL_SPLIT : JSplitPane.HORIZONTAL_SPLIT,
                 first,
                 second
         );
-        splitPane.setResizeWeight(weight);
         splitPane.setEnabled(!isLocked);
         splitPane.setDividerSize(isLocked ? 0 : 5);
         this.setLayout(new java.awt.BorderLayout());
         this.add(splitPane, java.awt.BorderLayout.CENTER);
+        splitPane.setResizeWeight(weight);
+
+        SwingUtilities.invokeLater(() ->
+            SwingUtilities.invokeLater(() -> {
+                int size = isVertical ? splitPane.getHeight() : splitPane.getWidth();
+                if (size > 0) {
+                    splitPane.setDividerLocation((int) (size * weight));
+                }
+            })
+        );
+
+
+
+        System.out.println("Created SplitNode: isVertical=" + isVertical + ", weight=" + weight + ", isLocked=" + isLocked);
+
     }
 }

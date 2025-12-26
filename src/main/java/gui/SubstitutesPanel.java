@@ -1,19 +1,19 @@
 package gui;
 import javax.swing.*;
 
+import formation.Formation;
 import player.Player;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.List;
 
 public class SubstitutesPanel extends JPanel {
     private ArrayList<Player> substitutes;
     private JList<Player> substitutesList;
     private JScrollPane scrollPane;
 
-    public SubstitutesPanel(List<Player> substitutes) {
-        this.substitutes = new ArrayList<>(substitutes);
+    public SubstitutesPanel(Formation formation) {
+        this.substitutes = new ArrayList<>(formation.getSubstitutes());
         this.setLayout(new BorderLayout());
         //this.setPreferredSize(new Dimension(200, 0));
 

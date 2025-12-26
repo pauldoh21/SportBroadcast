@@ -11,7 +11,7 @@ import java.util.List;
 
 public class FormationPanel extends JPanel {
     private Formation formation;
-    private List<PegButton> formationButtons;
+    private List<PegButtonSelectable> formationButtons;
     private int selectedX, selectedY;
     private List<LineButton> lineButtons;
     private PegInfoPanel pegInfoPanel;
@@ -43,16 +43,16 @@ public class FormationPanel extends JPanel {
         this.pegInfoPanel = pegInfoPanel;
     }
 
-    public List<PegButton> getFormationButtons() {
+    public List<PegButtonSelectable> getFormationButtons() {
         return formationButtons;
     }
 
-    public void selectPeg(PegButton pegButton) {
+    public void selectPeg(PegButtonSelectable pegButton) {
         if (pegButton == null) {
             pegInfoPanel.setPegButton(null);
         }
-        for (PegButton button : formationButtons) {
-            if (button instanceof PegButton pb) {
+        for (PegButtonSelectable button : formationButtons) {
+            if (button instanceof PegButtonSelectable pb) {
                 if (pegButton == null) {
                     pb.deselect();
                 } else if (pb == pegButton) {
@@ -69,7 +69,7 @@ public class FormationPanel extends JPanel {
         }
     }
 
-    private void selectedPegLineOptions(PegButton pegButton) {
+    private void selectedPegLineOptions(PegButtonSelectable pegButton) {
         if (pegButton != null) {
             for (int i = 0; i < formation.getLines().size(); i++) {
                 Line line = formation.getLines().get(i);
@@ -93,7 +93,7 @@ public class FormationPanel extends JPanel {
             add(lineButton);
             for (int j = 0; j < line.getPegs().size(); j++) {
                 Peg peg = line.getPegs().get(j);
-                PegButton pegButton = new PegButton(peg);
+                PegButtonSelectable pegButton = new PegButtonSelectable(peg);
                 formationButtons.add(pegButton);
                 add(pegButton);
             }
@@ -123,7 +123,7 @@ public class FormationPanel extends JPanel {
                 Peg peg = line.getPegs().get(j);
                 int x = (int) (panelWidth * (j + 1) / (line.getPegs().size() + 1));
 
-                for (PegButton pb : formationButtons) {
+                for (PegButtonSelectable pb : formationButtons) {
                     if (pb.getPeg() == peg && !pb.isDragging()) {
                         pb.setBounds((int) ((x - buttonSize / 2) + (peg.getxAdjustment() * panelWidth)), (int) ((y - buttonSize / 2) + (peg.getyAdjustment() * panelWidth)), buttonSize, buttonSize);
                         int playerNumber = peg.getPlayer() != null ? formation.getTeam().getPlayerNumber(peg.getPlayer()) : 0;
@@ -151,8 +151,8 @@ public class FormationPanel extends JPanel {
         return coords;
     }
 
-    public PegButton getSelectedPegButton() {
-        for (PegButton pb : formationButtons) {
+    public PegButtonSelectable getSelectedPegButton() {
+        for (PegButtonSelectable pb : formationButtons) {
             if (pb.isPegSelected()) {
                 return pb;
             }

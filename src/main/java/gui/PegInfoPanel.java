@@ -3,11 +3,14 @@ import java.awt.*;
 import java.util.List;
 import javax.swing.*;
 
+import formation.Peg;
 import formation.Position;
+import gui.Layout.PanelNode;
 import player.Player;
 
-public class PegInfoPanel extends JPanel {
-    private PegButton pegButton;
+public class PegInfoPanel extends PanelNode {
+    private PegButtonSelectable pegButton;
+    private Peg peg;
     private JLabel profilePicture;
     private JLabel nameLabel;
     private JLabel nameDisplayLabel;
@@ -15,7 +18,12 @@ public class PegInfoPanel extends JPanel {
     private JComboBox<Position> positionComboBox;
 
     public PegInfoPanel() {
-        this.setLayout(new BorderLayout());
+        super();
+        setBorder(null);
+
+        PanelNode contentPanel = new PanelNode();
+        contentPanel.setBorder(null);
+
         profilePicture = new JLabel(new ImageIcon("noName.png"));
 
         JPanel detailsPanel = new JPanel();
@@ -50,17 +58,27 @@ public class PegInfoPanel extends JPanel {
         gbc.gridy = 1;
         detailsPanel.add(positionComboBox, gbc);
 
-        this.add(profilePicture, BorderLayout.WEST);
-        this.add(detailsPanel, BorderLayout.CENTER);
+        contentPanel.add(profilePicture, BorderLayout.WEST);
+        contentPanel.add(detailsPanel, BorderLayout.CENTER);
+
+        this.setContent(contentPanel, BorderLayout.NORTH);
 
         updateInfo();
     }
 
-    public void setPegButton(PegButton pegButton) {
+    public void setPegButton(PegButtonSelectable pegButton) {
         if (pegButton == null) {
             positionComboBox.removeAllItems();
         }
         this.pegButton = pegButton;
+        updateInfo();
+    }
+
+    public void setPeg(Peg peg) {
+        if (peg == null) {
+            positionComboBox.removeAllItems();
+        }
+        this.peg = peg;
         updateInfo();
     }
 
@@ -72,24 +90,24 @@ public class PegInfoPanel extends JPanel {
     }
 
     private void updateInfo() {
-        if (pegButton == null) {
+        if (peg == null) {
             nameDisplayLabel.setText("");
             return;
         }
-        Player player = (pegButton != null) ? pegButton.getPeg().getPlayer() : null;
+        Player player = (peg != null) ? peg.getPlayer() : null;
         if (player != null) {
             nameDisplayLabel.setText(player.getName());
             nameDisplayLabel.setVisible(true);
-            positionComboBox.setSelectedItem(pegButton.getPeg().getPosition());
+            positionComboBox.setSelectedItem(peg.getPosition());
         } else {
             nameDisplayLabel.setVisible(false);
         }
     }
 
     private void setPegPosition(Position position) {
-        if (pegButton != null && position != null) {
+        if (peg != null && position != null) {
             System.out.println("Setting peg position to: " + position);
-            pegButton.getPeg().setPosition(position);
+            peg.setPosition(position);
         }
     }
 
