@@ -20,7 +20,7 @@ public class FormationEditor2 extends PanelNode {
         this.formation = formation;
         this.formationDisplay = new FormationDisplay(formation);
         this.formationEditorDetails = new FormationEditorDetails(formation);
-        this.layout = new SplitNode(formationDisplay, formationEditorDetails, false, 0.7, false);
+        this.layout = new SplitNode(formationDisplay, formationEditorDetails, false, 0.9, false);
         this.setContent(layout);
     }
 }

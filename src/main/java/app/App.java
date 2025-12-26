@@ -23,7 +23,7 @@ public class App {
 
         FormationEditor2 editor = new FormationEditor2(team1.getFormation());
 
-        SplitNode layout = new SplitNode(new SplitNode(new PanelNode(), editor, false, 0.1, false), new PanelNode(), true, 0.95, true);
+        SplitNode layout = new SplitNode(new SplitNode(new PanelNode(), editor, false, 0.1, false), new PanelNode(), true, 0.9, true);
 
         window.setLayoutNode(layout);
 
