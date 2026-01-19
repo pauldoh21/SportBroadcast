@@ -1,12 +1,12 @@
-package gui;
+package gui.swing;
 
 import javax.swing.*;
 
 import java.awt.*;
 
-import gui.Layout.PanelNode;
-import gui.Layout.SplitNode;
 import formation.Formation;
+import gui.Layout.swing.PanelNode;
+import gui.Layout.swing.SplitNode;
 
 public class FormationEditor2 extends PanelNode {
     SplitNode layout;

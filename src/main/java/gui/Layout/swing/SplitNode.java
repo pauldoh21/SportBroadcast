@@ -1,4 +1,4 @@
-package gui.Layout;
+package gui.Layout.swing;
 
 import javax.swing.*;
 import java.awt.event.ComponentAdapter;

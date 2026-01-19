@@ -1,11 +1,11 @@
-package gui;
+package gui.swing;
 import java.awt.*;
 import java.util.List;
 import javax.swing.*;
 
 import formation.Peg;
 import formation.Position;
-import gui.Layout.PanelNode;
+import gui.Layout.swing.PanelNode;
 import player.Player;
 
 public class PegInfoPanel extends PanelNode {

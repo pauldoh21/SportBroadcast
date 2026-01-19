@@ -1,16 +1,16 @@
-package gui;
+package gui.swing;
 import com.formdev.flatlaf.*;
 
 import formation.Formation;
+import gui.Layout.swing.LayoutNode;
+import gui.Layout.swing.PanelNode;
+import gui.Layout.swing.SplitNode;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
-import gui.Layout.LayoutNode;
-import gui.Layout.SplitNode;
-import gui.Layout.PanelNode;
 
 
 public class FormationEditor extends LayoutNode {

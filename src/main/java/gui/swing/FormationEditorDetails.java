@@ -1,4 +1,4 @@
-package gui;
+package gui.swing;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -9,8 +9,8 @@ import javax.swing.JTextField;
 
 import formation.Formation;
 import formation.Peg;
-import gui.Layout.PanelNode;
-import gui.Layout.SplitNode;
+import gui.Layout.swing.PanelNode;
+import gui.Layout.swing.SplitNode;
 
 public class FormationEditorDetails extends PanelNode {
     Formation formation;
