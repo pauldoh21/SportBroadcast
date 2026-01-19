@@ -1,4 +1,4 @@
-package gui;
+package gui.swing;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +12,7 @@ import java.awt.event.ComponentEvent;
 import formation.Formation;
 import formation.Line;
 import formation.Peg;
-import gui.Layout.PanelNode;
+import gui.Layout.swing.PanelNode;
 
 public class FormationDisplay extends PanelNode {
     Formation formation;

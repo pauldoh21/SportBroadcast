@@ -42,6 +42,7 @@ public class Peg {
 
     public void setxAdjustment(double xAdjustment) {
         this.xAdjustment = xAdjustment;
+        System.out.println("Peg for player " + (player != null ? player.getShirtNumber() : "null") + " xAdjustment set to " + xAdjustment);
     }
 
     public double getyAdjustment() {
@@ -50,6 +51,7 @@ public class Peg {
 
     public void setyAdjustment(double yAdjustment) {
         this.yAdjustment = yAdjustment;
+        System.out.println("Peg for player " + (player != null ? player.getShirtNumber() : "null") + " yAdjustment set to " + yAdjustment);
     }
 
     public Position getPosition() {

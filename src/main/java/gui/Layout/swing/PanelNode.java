@@ -1,4 +1,4 @@
-package gui.Layout;
+package gui.Layout.swing;
 
 import java.awt.BorderLayout;
 

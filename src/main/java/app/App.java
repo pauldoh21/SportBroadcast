@@ -2,12 +2,12 @@ package app;
 
 import com.formdev.flatlaf.FlatDarkLaf;
 
-import gui.BaseWindow;
-import gui.FormationDisplay;
-import gui.FormationEditor;
-import gui.FormationEditor2;
-import gui.Layout.PanelNode;
-import gui.Layout.SplitNode;
+import gui.Layout.swing.PanelNode;
+import gui.Layout.swing.SplitNode;
+import gui.swing.BaseWindow;
+import gui.swing.FormationDisplay;
+import gui.swing.FormationEditor;
+import gui.swing.FormationEditor2;
 import obs.OBSController;
 import team.FootballTeam;
 

@@ -1,9 +1,11 @@
-package gui;
+package gui.swing;
 
 import javax.swing.*;
-import gui.Layout.LayoutNode;
-import gui.Layout.PanelNode;
-import gui.Layout.SplitNode;
+
+import gui.Layout.swing.LayoutNode;
+import gui.Layout.swing.PanelNode;
+import gui.Layout.swing.SplitNode;
+
 import java.awt.*;
 
 public class BaseWindow extends JFrame {

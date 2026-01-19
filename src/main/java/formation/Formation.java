@@ -12,6 +12,7 @@ public class Formation {
     boolean includesGoalkeeper = true;
     int numberOfPlayers;
     private ArrayList<Player> substitutes;
+    private Line subsLine;
 
     public Formation(MultiPlayerTeam team) {
         this.numberOfPlayers = team.getSideSize();
@@ -51,8 +52,10 @@ public class Formation {
         }
 
         substitutes = new ArrayList<>();
+        subsLine = new Line(team.getPlayers().size() - numberOfPlayers);
         for (int i = numberOfPlayers + 1; i <= team.getPlayers().size(); i++) {
             substitutes.add(team.getPlayers().get(i));
+            subsLine.addPlayer(team.getPlayers().get(i), i - numberOfPlayers - 1);
         }
     }
 
@@ -78,6 +81,10 @@ public class Formation {
 
     public ArrayList<Player> getSubstitutes() {
         return substitutes;
+    }
+
+    public Line getSubsLine() {
+        return subsLine;
     }
 
     public void printFormation() {
