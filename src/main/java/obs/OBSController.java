@@ -1,7 +1,12 @@
 package obs;
 import java.net.ConnectException;
+import java.util.Map;
+import java.util.Set;
+
+import com.google.gson.JsonObject;
 
 import io.obswebsocket.community.client.OBSRemoteController;
+import io.obswebsocket.community.client.message.request.inputs.SetInputSettingsRequest;
 
 public class OBSController {
 	private OBSRemoteController obsRemoteController;
@@ -46,4 +51,24 @@ public class OBSController {
 		return obsRemoteController;
 	}
 
+	// OBS Control Methods
+
+	public void setSourceText(String sourceName, String text) {
+		try {
+			JsonObject settings = new JsonObject();
+			settings.addProperty("text", text);
+
+			SetInputSettingsRequest request = SetInputSettingsRequest.builder()
+					.inputName(sourceName)
+					.inputSettings(settings)
+					.overlay(true)
+					.build();
+
+			obsRemoteController.sendRequest(request, response -> {
+				System.out.println("Set text for source '" + sourceName + "' to: " + text);
+			});
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
