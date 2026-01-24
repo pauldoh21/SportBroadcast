@@ -14,6 +14,8 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import match.FootballMatch;
+import obs.OBSController;
 import team.FootballTeam;
 
 public class MainApp extends Application {
@@ -59,6 +61,13 @@ public class MainApp extends Application {
                 new PanelNodeFX()
         ), true, javafx.collections.FXCollections.observableArrayList(0.1, 0.9), true
         );
+
+        //OBSController obsController = new OBSController("localhost", 4455, "");
+        //obsController.setSourceText("Team1_Score", "2");
+
+        FootballMatch match = new FootballMatch("Match 1", "2024-06-01", team1, team2);
+        match.addGoal(team1, team1.getPlayers().get(0));
+        System.out.println(match.getScoreString());
 
         window.setContentNode(rootLayout);
         window.show();
