@@ -1,6 +1,8 @@
 package team;
 
 import formation.Formation;
+import formation.Line;
+import formation.Peg;
 import player.FootballPlayer;
 import player.Player;
 import player.PreferredName;
@@ -12,11 +14,10 @@ public class FootballTeam extends MultiPlayerTeam {
         super(name);
         // TODO: make 5s, 7s and 11s classes
         sideSize = 11;
-        formation = new Formation(this);
-        formation.includesGoalkeeper(true);
-        formation.setFormation("4-4-2");
+        formation = new Formation("4-4-2", true);
         generatePlayers();
-        formation.generateFormation();
+        formation.setTeam(this);
+        //formation.generateFormationWithTeam();
         formation.printFormation();
     }
 
@@ -34,6 +35,21 @@ public class FootballTeam extends MultiPlayerTeam {
 
     public Formation getFormation() {
         return formation;
+    }
+
+    public void setFormation(Formation newFormation) {
+        int count = 0;
+        if (newFormation.getTeam() != this) {
+            for (Line line : newFormation.getLines()) {
+                for (Peg peg : line.getPegs()) {
+                    if (count < getPlayers().size()) {
+                        peg.setPlayer(getPlayers().get(count));
+                        count++;
+                    }
+                }
+            }
+        }
+        this.formation = newFormation;
     }
 
 }

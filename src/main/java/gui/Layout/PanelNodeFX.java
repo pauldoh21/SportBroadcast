@@ -1,5 +1,7 @@
 package gui.Layout;
 
+import javafx.scene.Node;
+
 public class PanelNodeFX extends LayoutNodeFX {
     public PanelNodeFX() {
         super();
@@ -17,6 +19,17 @@ public class PanelNodeFX extends LayoutNodeFX {
         holder.prefWidthProperty().bind(this.widthProperty());
         holder.prefHeightProperty().bind(this.heightProperty());
         this.getChildren().add(holder);
+    }
+
+    public Node getContentNode() {
+        if (this.getChildren().isEmpty()) {
+            return null;
+        }
+        javafx.scene.layout.AnchorPane holder = (javafx.scene.layout.AnchorPane)this.getChildren().get(0);
+        if (holder.getChildren().isEmpty()) {
+            return null;
+        }
+        return holder.getChildren().get(0);
     }
 
     public void setBordered(boolean bordered) {

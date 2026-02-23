@@ -1,8 +1,12 @@
 package gui;
 
 import atlantafx.base.theme.PrimerDark;
+import gui.Dragging.DraggableNode;
 import atlantafx.base.theme.NordDark;
 import atlantafx.base.theme.Dracula;
+
+import java.util.Stack;
+
 import atlantafx.base.theme.CupertinoDark;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -12,6 +16,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import net.yetihafen.javafx.customcaption.CaptionConfiguration;
@@ -19,6 +24,8 @@ import net.yetihafen.javafx.customcaption.CustomCaption;
 
 public class BaseWindowFX extends Stage {
     private final BorderPane root;
+    private AnchorPane dragLayer;
+    
 
     public BaseWindowFX(String title) {
         Application.setUserAgentStylesheet(new CupertinoDark().getUserAgentStylesheet());
@@ -64,6 +71,15 @@ public class BaseWindowFX extends Stage {
         setScene(new Scene(root));
     }
 
+    private void createDragLayer() {
+        dragLayer = new AnchorPane();
+        dragLayer.setPrefSize(1000, 700);
+        dragLayer.setStyle("-fx-background-color: transparent;");
+        dragLayer.setMouseTransparent(true);
+        root.getChildren().add(dragLayer);
+        DraggableNode.setGlobalDragLayer(dragLayer);
+    }
+
     public void setContentNode(javafx.scene.Node node) {
         AnchorPane contentHolder = new AnchorPane();
         contentHolder.getChildren().add(node);
@@ -71,7 +87,12 @@ public class BaseWindowFX extends Stage {
         AnchorPane.setBottomAnchor(node, 0.0);
         AnchorPane.setLeftAnchor(node, 0.0);
         AnchorPane.setRightAnchor(node, 0.0);
-        root.setCenter(contentHolder);
+        if (dragLayer == null) {
+            createDragLayer();
+        }
+        StackPane stack = new StackPane();
+        stack.getChildren().addAll(contentHolder, dragLayer);
+        root.setCenter(stack);
     }
 
     public javafx.scene.Node getContentNode() {

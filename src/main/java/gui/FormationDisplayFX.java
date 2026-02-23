@@ -7,38 +7,55 @@ import formation.Formation;
 import formation.Line;
 import formation.Peg;
 import gui.Layout.PanelNodeFX;
+import javafx.scene.Node;
 import javafx.scene.layout.StackPane;
 
 public class FormationDisplayFX extends PanelNodeFX {
     Formation formation;
-    boolean interactable;
-    PegButtonGroupManagerFX buttonGroupManager;
     PanelNodeFX contentNode;
-    FormationDisplayBackgroundFX background;
-    private List<PegButtonFX> formationButtons;
+    protected PegButtonGroupManagerFX buttonGroupManager;
+    protected FormationDisplayBackgroundFX background;
+    protected List<PegButtonFX> formationButtons;
+    protected StackPane stack;
 
-    public FormationDisplayFX(Formation formation, PegButtonGroupManagerFX buttonGroupManager, boolean interactable) {
+    protected double pegButtonScale = 0.003;
+    protected java.util.Map<Peg, double[]> lastPositions = new java.util.HashMap<>(); // Cache positions as [x, y]
+
+    protected boolean positionChanged = false;
+
+    public FormationDisplayFX(Formation formation) {
         super();
         this.formation = formation;
-        this.interactable = interactable;
         setBordered(false);
 
         formationButtons = new ArrayList<>();
-        this.buttonGroupManager = buttonGroupManager;
-        // create the stack/content first so initialiseButtons adds into the visible contentNode
+
         initialiseStack();
+        initialiseButtonGroupManager();
+        setContent();
         initialiseButtons();
+        showFormation();
+    }
+
+    protected void initialiseButtonGroupManager() {
+        buttonGroupManager = null;
     }
 
     public void setFormation(Formation formation) {
         this.formation = formation;
+        updateButtons();
+        showFormation();
     }
 
-    private void initialiseStack() {
+    protected void setContent() {
+        this.setContentNode(stack);
+    }
+
+    protected void initialiseStack() {
         contentNode = new PanelNodeFX();
         contentNode.setBordered(false);
         background = new FormationDisplayBackgroundFX();
-        StackPane stack = new StackPane(background, contentNode);
+        stack = new StackPane(background, contentNode);
         background.prefWidthProperty().bind(stack.widthProperty());
         background.prefHeightProperty().bind(stack.heightProperty());
 
@@ -47,12 +64,20 @@ public class FormationDisplayFX extends PanelNodeFX {
 
         stack.prefWidthProperty().bind(this.widthProperty());
         stack.prefHeightProperty().bind(this.heightProperty());
-
-        this.setContentNode(stack);
     }
 
-    public void initialiseButtons() {
+    protected StackPane getStack() {
+        return stack;
+    }
+
+    protected PegButtonFX initialiseButton(Peg peg) {
+        PegButtonFX pegButton = new PegButtonFX(peg);
+        return pegButton;
+    }
+
+    protected void initialiseButtons() {
         formationButtons.clear();
+        lastPositions.clear(); // Clear cached positions when buttons are reinitialized
         if (background == null) {
             initialiseStack();
         }
@@ -62,25 +87,27 @@ public class FormationDisplayFX extends PanelNodeFX {
 
         for (Line line : formation.getLines()) {
             for (Peg peg : line.getPegs()) {
-                PegButtonFX pegButton;
-                if (interactable) {
-                    pegButton = new PegButtonSelectableFX(peg);
-                } else {
-                    pegButton = new PegButtonFX(peg);
-                }
-                formationButtons.add(pegButton);
-                contentNode.getChildren().add(pegButton);
+                PegButtonFX button = initialiseButton(peg);
+                formationButtons.add(button);
+                contentNode.getChildren().add(button);
             }
         }
-        if (interactable) {
-            for (PegButtonFX button : formationButtons) {
-                if (button instanceof PegButtonSelectableFX selectableButton) {
-                    selectableButton.setButtonGroup(buttonGroupManager);
-                    buttonGroupManager.addButton(selectableButton);
-                }
-            }
+    }
+
+    protected void refreshButtons() {
+        for (PegButtonFX button : formationButtons) {
+            button.refresh();
         }
-        showFormation();
+    }
+
+    protected void updateButton(PegButtonFX button, Peg peg) {
+        button.setPeg(peg);
+    }
+
+    protected void updateButtons() {
+        for (PegButtonFX button : formationButtons) {
+            updateButton(button, formation.getPegAtIndex(formationButtons.indexOf(button)));
+        }
     }
 
     // Listener to update formation display on resize
@@ -90,22 +117,42 @@ public class FormationDisplayFX extends PanelNodeFX {
         showFormation();
     }
 
-    private void drawLine(PegButtonFX peg1, PegButtonFX peg2) {
-        javafx.scene.shape.Line line = new javafx.scene.shape.Line();
-        line.setStartX(peg1.getLayoutX() + peg1.getWidth() / 2 + peg1.getTranslateX());
-        line.setStartY(peg1.getLayoutY() + peg1.getHeight() / 2 + peg1.getTranslateY());
-        line.setEndX(peg2.getLayoutX() + peg2.getWidth() / 2 + peg2.getTranslateX());
-        line.setEndY(peg2.getLayoutY() + peg2.getHeight() / 2 + peg2.getTranslateY());
-        line.setStrokeWidth(4);
-        line.setStroke(javafx.scene.paint.Color.web("#89e3ffff"));
+    private void drawLine(PegButtonFX peg1, PegButtonFX peg2, FormationLineFX parentLine) {
+        FormationSegmentFX segment = new FormationSegmentFX(parentLine);
+        segment.setStartX(peg1.getLayoutX() + peg1.getWidth() / 2 + peg1.getTranslateX());
+        segment.setStartY(peg1.getLayoutY() + peg1.getHeight() / 2 + peg1.getTranslateY());
+        segment.setEndX(peg2.getLayoutX() + peg2.getWidth() / 2 + peg2.getTranslateX());
+        segment.setEndY(peg2.getLayoutY() + peg2.getHeight() / 2 + peg2.getTranslateY());
 
-        contentNode.getChildren().add(line);
-        line.toBack();
+        parentLine.addSegment(segment);
+        segment.toBack();
 
     }
 
+    private void drawLines() {
+        for (int i = 0; i < formation.getLines().size(); i++) {
+            Line line = formation.getLines().get(i);
+            FormationLineFX formationLine = new FormationLineFX(i);
+
+            for (int j = 1; j < line.getPegs().size(); j++) {
+                Peg peg = line.getPegs().get(j);
+                PegButtonFX pegButton = getPegButton(peg);
+
+                if (pegButton != null) {
+                    final int prevIndex = j - 1;
+                    final formation.Peg prevPeg = line.getPegs().get(prevIndex);
+                    PegButtonFX previousPegButton = getPegButton(prevPeg);
+                    if (previousPegButton != null) {
+                        drawLine(previousPegButton, pegButton, formationLine);
+                    }
+                }
+            }
+            formationLine.addToNode(contentNode);
+        }
+    }
+
     private void clearLines() {
-        contentNode.getChildren().removeIf(node -> node instanceof javafx.scene.shape.Line);
+        contentNode.getChildren().removeIf(node -> node instanceof FormationSegmentFX);
     }
 
     private double widthAtHeight(double height) {
@@ -119,11 +166,34 @@ public class FormationDisplayFX extends PanelNodeFX {
         return topWidth + (bottomWidth - topWidth) * (height / h);
     }
 
-    public void showFormation() {
-        clearLines();
-        buttonGroupManager.clearLineGroups();
-        double panelWidth = this.getWidth();
-        double panelHeight = this.getHeight();
+    private PegButtonFX getPegButton(Peg peg) {
+        for (PegButtonFX button : formationButtons) {
+            if (button.getPeg() == peg) {
+                return button;
+            }
+        }
+        return null;
+    }
+
+    private void placeButton(PegButtonFX button, double xPos, double yPos) {
+        button.setLayoutX(xPos - button.getWidth() / 2);
+        button.setLayoutY(yPos - button.getHeight() / 2);
+        pegButtonScale = ((this.getWidth()+this.getHeight())/2) * 0.003;
+        button.setRadius(15.0 * pegButtonScale);
+    }
+
+    protected double getDisplayHeight() {
+        return this.getHeight();
+    }
+
+    protected double getDisplayWidth() {
+        return this.getWidth();
+    }
+
+    // TODO: Convert this to a refresh function which will animate changes
+    protected void showFormation() {
+        double panelWidth = getDisplayWidth();
+        double panelHeight = getDisplayHeight();
 
         for (int i = 0; i < formation.getLines().size(); i++) {
             Line line = formation.getLines().get(i);
@@ -131,40 +201,35 @@ public class FormationDisplayFX extends PanelNodeFX {
 
             for (int j = 0; j < line.getPegs().size(); j++) {
                 Peg peg = line.getPegs().get(j);
-                PegButtonFX pegButton = formationButtons.stream()
-                        .filter(btn -> btn.getPeg() == peg)
-                        .findFirst()
-                        .orElse(null);
+                PegButtonFX pegButton = getPegButton(peg);
 
-                List<PegButtonFX> lineGroup = new ArrayList<>();
                 if (pegButton != null) {
                     double xPos = panelWidth / (line.getPegs().size() + 1) * (j + 1);
                     xPos = (xPos - panelWidth / 2) * (widthAtHeight(yPos) / panelWidth) + panelWidth / 2;
-                    //System.out.println("Positioning PegButtonFX for Peg " + peg.getPlayer() + " at (" + xPos + ", " + yPos + ")");
-                    pegButton.setLayoutX(xPos - pegButton.getWidth() / 2);
-                    pegButton.setLayoutY(yPos - pegButton.getHeight() / 2);
-                    pegButton.setScaleX(((panelWidth+panelHeight)/2) * 0.003);
-                    pegButton.setScaleY(((panelWidth+panelHeight)/2) * 0.003);
-                    pegButton.setText(String.valueOf(peg.getPlayer().getShirtNumber()));
-                    if (j > 0) {
-                        final int prevIndex = j - 1;
-                        final formation.Peg prevPeg = line.getPegs().get(prevIndex);
-                        PegButtonFX previousPegButton = formationButtons.stream()
-                                .filter(btn -> btn.getPeg() == prevPeg)
-                                .findFirst()
-                                .orElse(null);
-                        if (previousPegButton != null) {
-                            drawLine(previousPegButton, pegButton);
-                        }
+                    double relativeAdjustX = peg.getxAdjustment()/100.0 * widthAtHeight(yPos);
+                    double relativeAdjustY = peg.getyAdjustment()/100.0 * panelHeight;
+                    
+                    double finalX = xPos + relativeAdjustX;
+                    double finalY = yPos + relativeAdjustY;
+                    
+                    // Only update if position changed
+                    double[] cachedPos = lastPositions.get(peg);
+                    if (cachedPos == null || cachedPos[0] != finalX || cachedPos[1] != finalY) {
+                        placeButton(pegButton, finalX, finalY);
+                        lastPositions.put(peg, new double[]{finalX, finalY});
+                        positionChanged = true;
                     }
-                    lineGroup.add(pegButton);
-                }
-                if (interactable) {
-                    buttonGroupManager.addLineGroup(lineGroup);
                 }
             }
         }
-
+        
+        // Only redraw lines if positions changed
+        if (positionChanged) {
+            clearLines();
+            drawLines();
+            refreshButtons();
+            positionChanged = false;
+        }
     }
 
 }

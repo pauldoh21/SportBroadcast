@@ -5,7 +5,8 @@ import javafx.scene.control.OverrunStyle;
 import javafx.scene.text.Font;
 
 public class PegButtonFX extends javafx.scene.control.Button {
-    private formation.Peg peg;
+    protected formation.Peg peg;
+    protected double radius;
 
     public PegButtonFX(formation.Peg peg) {
         this.peg = peg;
@@ -16,16 +17,44 @@ public class PegButtonFX extends javafx.scene.control.Button {
         return peg;
     }
 
+    public void setPeg(formation.Peg peg) {
+        this.peg = peg;
+        updateText();
+    }
+
+    public void refresh() {
+        updateText();
+    }
+
+    private void updateText() {
+        if (peg.getPlayer() != null) {
+            this.setText(peg.getPlayer().getShirtNumber() + "");
+        } else {
+            this.setText("");
+        }
+    }
+
+    public void setRadius(double radius) {
+        this.radius = radius;
+        double diameter = radius * 2;
+        this.setPrefSize(diameter, diameter);
+        this.setMinSize(diameter, diameter);
+        this.setMaxSize(diameter, diameter);
+    }
+
+    public double getRadius() {
+        return radius;
+    }
+
     private void configureButton() {
-        double baseSize = 30.0;
-        this.setPrefSize(baseSize, baseSize);
-        this.setMinSize(baseSize, baseSize);
-        this.setMaxSize(baseSize, baseSize);
+        updateText();
+
+        setRadius(15);
         this.setPadding(Insets.EMPTY);
         this.setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-background-radius: 999; -fx-border-radius: 999;");
         this.setTextOverrun(OverrunStyle.CLIP);
-        this.setFont(Font.font(12));
-        this.setShape(new javafx.scene.shape.Circle(baseSize / 2.0));
+        this.setFont(Font.font(24));
+        this.setShape(new javafx.scene.shape.Circle(radius));
     }
     
 }

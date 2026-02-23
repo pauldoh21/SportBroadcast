@@ -3,7 +3,7 @@ package match.event;
 import player.Player;
 import team.Team;
 
-public class Goal extends Event {
+public class Goal extends MatchEvent {
     private Player scorer;
 
     public Goal(Team team, int timeSeconds, Player scorer) {

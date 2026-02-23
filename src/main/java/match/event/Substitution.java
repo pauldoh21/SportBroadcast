@@ -3,7 +3,7 @@ package match.event;
 import player.Player;
 import team.Team;
 
-public class Substitution extends Event {
+public class Substitution extends MatchEvent {
     private Player playerOut;
     private Player playerIn;
 

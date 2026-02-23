@@ -1,8 +1,14 @@
 package gui;
 
+import gui.Dragging.DraggableNode;
+import gui.Dragging.PegHoveredEvent;
+import gui.Dragging.PegLineSwapEvent;
+import gui.Dragging.PegSwapEvent;
 import javafx.scene.Cursor;
+import javafx.scene.Node;
+import javafx.scene.input.PickResult;
 
-public class PegButtonSelectableFX extends PegButtonFX {
+public class PegButtonSelectableFX extends PegButtonFX implements DropTarget {
     boolean selected;
     boolean highlighted;
     boolean transparent;
@@ -12,11 +18,58 @@ public class PegButtonSelectableFX extends PegButtonFX {
         super(peg);
         selected = false;
         this.setCursor(Cursor.HAND);
-        makeDraggable();
+        initialiseDragging();
+        this.getProperties().put("isDropTarget", true);
+        DropTargetList.registerDropTarget(this);
         this.setOnMouseClicked(e -> buttonGroupManager.buttonFired(this, e));
     }
 
-    public void setButtonGroup(PegButtonGroupManagerFX buttonGroupManager) {
+    private void initialiseDragging() {
+        new DraggableNode(this) {
+            @Override
+            protected void onDragStart() {
+                node.setOpacity(0.0);
+                node.setCursor(Cursor.CLOSED_HAND);
+            }
+
+            @Override
+            protected void onDrag() {
+                super.onDrag();
+                buttonGroupManager.dragging((PegButtonSelectableFX) node);
+            }
+
+            @Override
+            protected void onDragEnd() {
+                PegButtonSelectableFX button = (PegButtonSelectableFX) node;
+                node.setOpacity(1.0);
+                button.setCursor(Cursor.HAND);
+            }
+
+            @Override
+            protected void onDropAccepted(Node dropTarget, PickResult pick) {
+                PegButtonSelectableFX button = (PegButtonSelectableFX) node;
+                if (dropTarget instanceof PegButtonSelectableFX pbsfx) {
+                    button.fireEvent(new PegSwapEvent(button, pbsfx));
+                } else if (dropTarget instanceof FormationSegmentFX fsfx) {
+                    button.fireEvent(new PegLineSwapEvent(button, fsfx));
+                }
+            }
+
+            @Override
+            protected void onHover(Node target) {
+                PegButtonSelectableFX button = (PegButtonSelectableFX) node;
+                button.fireEvent(new PegHoveredEvent(PegHoveredEvent.PEG_HOVERED, button, target));
+            }
+
+            @Override
+            protected void onUnhover(Node prevTarget) {
+                PegButtonSelectableFX button = (PegButtonSelectableFX) node;
+                button.fireEvent(new PegHoveredEvent(PegHoveredEvent.PEG_UNHOVERED, button, prevTarget));
+            }
+        };
+    }
+
+    public void setButtonGroupManager(PegButtonGroupManagerFX buttonGroupManager) {
         this.buttonGroupManager = buttonGroupManager;
     }
 
@@ -31,7 +84,7 @@ public class PegButtonSelectableFX extends PegButtonFX {
 
     private void updateStyle() {
         if (selected) {
-            this.setStyle("-fx-background-color: red; -fx-text-fill: white; -fx-background-radius: 999; -fx-border-radius: 999;");
+            this.setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-background-radius: 999; -fx-border-radius: 999; -fx-border-color: yellow; -fx-border-width: 3;");
         } else if (highlighted) {
             this.setStyle("-fx-background-color: orange; -fx-text-fill: white; -fx-background-radius: 999; -fx-border-radius: 999;");
         } else if (transparent) {
@@ -46,45 +99,12 @@ public class PegButtonSelectableFX extends PegButtonFX {
         updateStyle();
     }
 
+    public boolean isHighlighted() {
+        return highlighted;
+    }
+
     public void setTransparent(boolean transparent) {
         this.transparent = transparent;
         updateStyle();
     }
-
-    private double startX;
-    private double startY;
-
-    private void makeDraggable() {
-        this.setOnMousePressed(e -> {
-            startX = e.getSceneX() - this.getTranslateX();
-            startY = e.getSceneY() - this.getTranslateY();
-        });
-
-        this.setOnMouseDragged(e -> {
-            this.toFront();
-            this.setCursor(Cursor.CLOSED_HAND);
-            double dragStep = buttonGroupManager.getDragStep();
-            double newX = e.getSceneX() - startX;
-            double newY = e.getSceneY() - startY;
-            if (dragStep > 0) {
-                newX = Math.round(newX / dragStep) * dragStep;
-                newY = Math.round(newY / dragStep) * dragStep;
-            }
-            this.setTranslateX(newX);
-            this.setTranslateY(newY);
-            buttonGroupManager.dragging(this);
-        });
-
-        this.setOnMouseReleased(e -> {
-            double newX = e.getSceneX() - startX;
-            double newY = e.getSceneY() - startY;
-            this.getPeg().setxAdjustment(newX);
-            this.getPeg().setyAdjustment(newY);
-            buttonGroupManager.finishedDragging();
-            this.setTranslateX(this.getPeg().getxAdjustment());
-            this.setTranslateY(this.getPeg().getyAdjustment());
-            this.setCursor(Cursor.HAND);
-        });
-    }
-    
 }

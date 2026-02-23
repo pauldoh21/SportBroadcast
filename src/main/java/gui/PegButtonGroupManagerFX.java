@@ -2,22 +2,33 @@ package gui;
 
 import java.util.List;
 
+import formation.Peg;
 import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 
 public class PegButtonGroupManagerFX {
     private List<PegButtonSelectableFX> buttonGroup;
     private List<List<PegButtonFX>> lineGroups;
-    private List<PegButtonSelectableFX> selectedButtons;
+    protected List<PegButtonSelectableFX> selectedButtons;
     private FormationDisplayFX formationDisplay;
     private Node dragArea;
     private double dragStep;
-    private int maxSelections = 2;
-    
+    private int maxSelections = 11;
+
+    public PegButtonGroupManagerFX() {
+        this.buttonGroup = new java.util.ArrayList<>();
+        lineGroups = new java.util.ArrayList<>();
+        selectedButtons = new java.util.ArrayList<>();
+    }
+
     public PegButtonGroupManagerFX(List<PegButtonSelectableFX> buttonGroup) {
         this.buttonGroup = buttonGroup;
         lineGroups = new java.util.ArrayList<>();
         selectedButtons = new java.util.ArrayList<>();
+    }
+
+    public void setButtonGroup(List<PegButtonSelectableFX> buttonGroup) {
+        this.buttonGroup = buttonGroup;
     }
 
     public void setFormationDisplay(FormationDisplayFX formationDisplay) {
@@ -34,6 +45,10 @@ public class PegButtonGroupManagerFX {
 
     public List<PegButtonSelectableFX> getButtonGroup() {
         return buttonGroup;
+    }
+
+    public List<PegButtonSelectableFX> getSelectedButtons() {
+        return selectedButtons;
     }
 
     public void addLineGroup(List<PegButtonFX> lineGroup) {
@@ -80,25 +95,21 @@ public class PegButtonGroupManagerFX {
     }
 
     public void selectButton(PegButtonSelectableFX button, boolean shiftDown) {
-        for (PegButtonSelectableFX b : buttonGroup) {
-            if (b != button && !shiftDown) {
-                if (selectedButtons.contains(b)) {
-                    selectedButtons.remove(b);
-                }
-            }
-        }
-        if (!button.isSelected()) {
+        if (!shiftDown) {
+            selectedButtons.clear();
             selectedButtons.add(button);
         } else {
-            selectedButtons.remove(button);
-        }
-        if (selectedButtons.size() > maxSelections) {
-            selectedButtons.remove(0);
+            if (!selectedButtons.contains(button)) {
+                selectedButtons.add(button);
+                if (selectedButtons.size() > maxSelections) {
+                    selectedButtons.remove(0);
+                }
+            }
         }
         selectButtons();
     }
 
-    private void selectButtons() {
+    protected void selectButtons() {
         for (PegButtonSelectableFX b : buttonGroup) {
             if (selectedButtons.contains(b)) {
                 b.setSelected(true);
@@ -106,10 +117,30 @@ public class PegButtonGroupManagerFX {
                 b.setSelected(false);
             }
         }
+        PegButtonSelectableFX lastSelected = selectedButtons.get(selectedButtons.size() - 1);
+        lastSelected.fireEvent(new PegSelectedEvent(lastSelected.getPeg(), this));
+    }
+
+    public void deselectAll() {
+        selectedButtons.clear();
+        for (PegButtonSelectableFX b : buttonGroup) {
+            b.setSelected(false);
+        }
+    }
+
+    // TODO: If anything that is not a peg button is clicked, deselect all
+
+
+    public void adjustPeg(double deltaX, double deltaY) {
+        for (PegButtonSelectableFX button : selectedButtons) {
+            Peg peg = button.getPeg();
+            peg.setxAdjustment(peg.getxAdjustment() + deltaX);
+            peg.setyAdjustment(peg.getyAdjustment() + deltaY);
+        }
     }
 
     public void finishedDragging() {
-        formationDisplay.showFormation();
+        //formationDisplay.showFormation();
         revertToSelectedButtons();
     }
 
@@ -139,5 +170,9 @@ public class PegButtonGroupManagerFX {
 
     public void setDragStep(double dragStep) {
         this.dragStep = dragStep;
+    }
+
+    protected void buttonsAdjusted() {
+        
     }
 }

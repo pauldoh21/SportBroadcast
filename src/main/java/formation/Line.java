@@ -49,4 +49,12 @@ public class Line {
             pegs.get(pegIndex).setPlayer(player);
         }
     }
+
+    public void removePeg(Peg peg) {
+        pegs.remove(peg);
+    }
+
+    public void addPegAtPosition(Peg peg, int position) {
+        pegs.add(position, peg);
+    }
 }
