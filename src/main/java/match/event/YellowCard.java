@@ -3,7 +3,7 @@ package match.event;
 import player.Player;
 import team.Team;
 
-public class YellowCard extends Event {
+public class YellowCard extends MatchEvent {
     private Player player;
 
     public YellowCard(Team team, int timeSeconds, Player player) {

@@ -1,7 +1,7 @@
 package match;
 import java.util.List;
 
-import match.event.Event;
+import match.event.MatchEvent;
 
 public abstract class Match {
     private String name;
@@ -9,7 +9,7 @@ public abstract class Match {
     private int currentTime;
     private int halfDuration;
     private int numberOfHalves;
-    private List<Event> events;
+    private List<MatchEvent> events;
 
     public Match(String name, String date) {
         this.name = name;
@@ -37,11 +37,11 @@ public abstract class Match {
         return numberOfHalves;
     }
 
-    public List<Event> getEvents() {
+    public List<MatchEvent> getEvents() {
         return events;
     }
 
-    public void addEvent(Event event) {
+    public void addEvent(MatchEvent event) {
         events.add(event);
     }
 }

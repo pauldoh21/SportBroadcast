@@ -1,9 +1,15 @@
 package app;
 
+import formation.Formation;
 import gui.BaseWindowFX;
 import gui.FormationDisplayBackgroundFX;
 import gui.FormationDisplayFX;
+import gui.FormationDisplayFXDeprecated;
+import gui.FormationEditorActionableFX;
 import gui.FormationEditorFX;
+import gui.FormationEditorFXDeprecated;
+import gui.FormationEditorTeamFX;
+import gui.MatchControllerFX;
 import gui.Layout.GroupFX;
 import gui.Layout.LayoutNodeFX;
 import gui.Layout.SplitNodeFX;
@@ -21,17 +27,16 @@ import team.FootballTeam;
 public class MainApp extends Application {
     @Override
     public void start(Stage primaryStage) {
-        FootballTeam team1 = new FootballTeam("Team A");
+        BaseWindowFX window = new BaseWindowFX("SportBroadcast");
+        /* FootballTeam team1 = new FootballTeam("Team A");
         FootballTeam team2 = new FootballTeam("Team B");
         team2.getFormation().setFormation("4-3-2-1");
-        team2.getFormation().generateFormation();
+        team2.getFormation().generateFormationWithTeam();
 
-        FormationEditorFX formationDisplay = new FormationEditorFX(team1.getFormation());
-        FormationEditorFX formationDisplay2 = new FormationEditorFX(team2.getFormation());
+        FormationEditorFXDeprecated formationDisplay = new FormationEditorFXDeprecated(team1.getFormation());
+        FormationEditorFXDeprecated formationDisplay2 = new FormationEditorFXDeprecated(team2.getFormation());
         formationDisplay.setBordered(false);
         formationDisplay2.setBordered(false);
-
-        BaseWindowFX window = new BaseWindowFX("SportBroadcast (JavaFX)");
 
         StackPane placeholder = new StackPane(new Label("JavaFX UI placeholder"));
 
@@ -67,9 +72,21 @@ public class MainApp extends Application {
 
         FootballMatch match = new FootballMatch("Match 1", "2024-06-01", team1, team2);
         match.addGoal(team1, team1.getPlayers().get(0));
-        System.out.println(match.getScoreString());
+        System.out.println(match.getScoreString()); */
 
-        window.setContentNode(rootLayout);
+        //window.setContentNode(rootLayout);
+        /* Formation tempFormation = new Formation("4-4-2");
+        tempFormation.generateFormation();
+        FormationEditorFX formationDisplayFX = new FormationEditorFX(tempFormation); */
+        
+        FootballTeam team1 = new FootballTeam("Team A");
+        FootballTeam team2 = new FootballTeam("Team B");
+        //FootballMatch match = new FootballMatch("Match 1", "2026-06-26", team1, team2);
+        //FormationEditorActionableFX formationDisplayFX = new FormationEditorActionableFX(team1, match);
+        MatchControllerFX matchController = new MatchControllerFX(team1, team2);
+        matchController.getMatch().initialiseBraodcast("localhost", 4455, "");
+
+        window.setContentNode(matchController);
         window.show();
     }
 

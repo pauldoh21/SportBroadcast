@@ -81,7 +81,7 @@ public class FormationEditor extends LayoutNode {
         if (formationInput.getText() != formation.getFormation()) {
             try {
                 formation.setFormation(formationInput.getText());
-                formation.generateFormation();
+                formation.generateFormationWithTeam();
                 formationPanel.initialiseButtons();
                 formationPanel.redrawFormation();
             } catch (IllegalArgumentException ex) {

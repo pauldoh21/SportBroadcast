@@ -22,6 +22,13 @@ public class Peg {
         this.position = null;
     }
 
+    public void copyPeg(Peg peg) {
+        this.player = peg.player;
+        this.position = peg.position;
+        this.xAdjustment = peg.xAdjustment;
+        this.yAdjustment = peg.yAdjustment;
+    }
+
     public Player getPlayer() {
         return player;
     }
@@ -30,10 +37,12 @@ public class Peg {
         this.player = player;
     }
 
-    public void swapPlayer(Peg otherPlayer) {
+    public void swapPeg(Peg otherPeg) {
         Player temp = this.player;
-        this.player = otherPlayer.getPlayer();
-        otherPlayer.setPlayer(temp);
+        this.player = otherPeg.getPlayer();
+        otherPeg.setPlayer(temp);
+        System.out.println("Swapped pegs: this peg now has player " + (this.player != null ? this.player.getShirtNumber() : "null") +
+                           ", other peg now has player " + (otherPeg.getPlayer() != null ? otherPeg.getPlayer().getShirtNumber() : "null"));
     }
 
     public double getxAdjustment() {
@@ -60,5 +69,12 @@ public class Peg {
 
     public void setPosition(Position position) {
         this.position = position;
+    }
+
+    public void reset() {
+        setPlayer(null);
+        setPosition(null);
+        setxAdjustment(0);
+        setyAdjustment(0);
     }
 }

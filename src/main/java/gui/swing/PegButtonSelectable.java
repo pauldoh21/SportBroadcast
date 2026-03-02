@@ -144,7 +144,7 @@ public class PegButtonSelectable extends JButton {
         Peg thisPeg = this.getPeg();
         Peg otherPeg = otherPegButton.getPeg();
 
-        thisPeg.swapPlayer(otherPeg);
+        thisPeg.swapPeg(otherPeg);
 
         FormationPanel parentPanel = (FormationPanel) this.getParent();
         parentPanel.selectPeg(otherPegButton);
