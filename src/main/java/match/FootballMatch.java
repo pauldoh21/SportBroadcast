@@ -15,9 +15,10 @@ public class FootballMatch extends Match {
         super(name, date);
         this.team1 = team1;
         this.team2 = team2;
+        timer.setOnSecondElapsed(this::secondElapsed);
     }
 
-    public void initialiseBraodcast(String host, int port, String password) {
+    public void initialiseBroadcast(String host, int port, String password) {
         fb = new FootballBroadcaster(host, port, password);
     }
 
@@ -56,6 +57,12 @@ public class FootballMatch extends Match {
 
     public String getScoreString() {
         return score[0] + " - " + score[1];
+    }
+
+    private void secondElapsed() {
+        if (fb != null) {
+            fb.setTimer(timer.getCurrentTimeFormatted());
+        }
     }
 
 }
