@@ -17,4 +17,8 @@ public class FootballBroadcaster {
         obs.setSourceText("Team2_Score", String.valueOf(score2));
     }
 
+
+    public void setTimer(String time) {
+        obs.setSourceText("Time_Text", time);
+    }
 }

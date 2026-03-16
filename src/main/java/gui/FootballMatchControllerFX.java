@@ -6,7 +6,7 @@ import javafx.collections.FXCollections;
 import match.FootballMatch;
 import team.FootballTeam;
 
-public class MatchControllerFX extends PanelNodeFX {
+public class FootballMatchControllerFX extends PanelNodeFX {
     protected FootballMatch match;
     protected FootballTeam team1;
     protected FootballTeam team2;
@@ -14,9 +14,9 @@ public class MatchControllerFX extends PanelNodeFX {
     protected FormationEditorActionableFX editor2;
     protected GroupFX editorGroup;
     
-    public MatchControllerFX(FootballTeam team1, FootballTeam team2) {
+    public FootballMatchControllerFX(FootballTeam team1, FootballTeam team2) {
         super();
-        this.match = new FootballMatch("FootballMatch", "26/06/26", team1, team2);
+        this.match = new FootballMatch("FootballMatch", "27/06/26", team1, team2);
         this.team1 = team1;
         this.team2 = team2;
         initialiseEditors();

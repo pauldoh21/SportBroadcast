@@ -9,7 +9,7 @@ import gui.FormationEditorActionableFX;
 import gui.FormationEditorFX;
 import gui.FormationEditorFXDeprecated;
 import gui.FormationEditorTeamFX;
-import gui.MatchControllerFX;
+import gui.FootballMatchControllerFX;
 import gui.Layout.GroupFX;
 import gui.Layout.LayoutNodeFX;
 import gui.Layout.SplitNodeFX;
@@ -85,8 +85,9 @@ public class MainApp extends Application {
         FootballTeam team2 = new FootballTeam("Team B");
         //FootballMatch match = new FootballMatch("Match 1", "2026-06-26", team1, team2);
         //FormationEditorActionableFX formationDisplayFX = new FormationEditorActionableFX(team1, match);
-        MatchControllerFX matchController = new MatchControllerFX(team1, team2);
-        matchController.getMatch().initialiseBraodcast("localhost", 4455, "");
+        FootballMatchControllerFX matchController = new FootballMatchControllerFX(team1, team2);
+        matchController.getMatch().initialiseBroadcast("localhost", 4455, "");
+        matchController.getMatch().start();
 
         TeamsheetPDF teamsheetPDF = new TeamsheetPDF(team1);
         teamsheetPDF.generate();
