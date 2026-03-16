@@ -30,6 +30,9 @@ replay_pid*
 *.puml
 *.plantuml
 
+# Exclude generated files
+*.pdf
+
 ### IntelliJ IDEA ###
 .idea
 *.iws

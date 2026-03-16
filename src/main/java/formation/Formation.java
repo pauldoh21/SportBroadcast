@@ -269,6 +269,30 @@ public class Formation {
         return subsLine;
     }
 
+    public ArrayList<Player> getOnFieldPlayers() {
+        ArrayList<Player> onFieldPlayers = new ArrayList<>();
+        for (Line line : lines) {
+            if (!line.equals(subsLine)) {
+                for (Peg peg : line.getPegs()) {
+                    if (peg.getPlayer() != null) {
+                        onFieldPlayers.add(peg.getPlayer());
+                    }
+                }
+            }
+        }
+        return onFieldPlayers;
+    }
+
+    public ArrayList<Player> getSubstitutePlayers() {
+        ArrayList<Player> substitutePlayers = new ArrayList<>();
+        for (Peg peg : subsLine.getPegs()) {
+            if (peg.getPlayer() != null) {
+                substitutePlayers.add(peg.getPlayer());
+            }
+        }
+        return substitutePlayers;
+    }
+
     public Peg getPegAtIndex(int i) {
         int count = 0;
         for (Line line : lines) {

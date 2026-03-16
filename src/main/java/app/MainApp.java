@@ -23,6 +23,8 @@ import javafx.stage.Stage;
 import match.FootballMatch;
 import obs.OBSController;
 import team.FootballTeam;
+import team.Team;
+import teamsheet.TeamsheetPDF;
 
 public class MainApp extends Application {
     @Override
@@ -85,6 +87,9 @@ public class MainApp extends Application {
         //FormationEditorActionableFX formationDisplayFX = new FormationEditorActionableFX(team1, match);
         MatchControllerFX matchController = new MatchControllerFX(team1, team2);
         matchController.getMatch().initialiseBraodcast("localhost", 4455, "");
+
+        TeamsheetPDF teamsheetPDF = new TeamsheetPDF(team1);
+        teamsheetPDF.generate();
 
         window.setContentNode(matchController);
         window.show();
