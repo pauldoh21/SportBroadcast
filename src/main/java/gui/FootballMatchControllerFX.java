@@ -2,6 +2,7 @@ package gui;
 
 import gui.Layout.GroupFX;
 import gui.Layout.PanelNodeFX;
+import gui.obs.ObsPreview;
 import javafx.collections.FXCollections;
 import match.FootballMatch;
 import team.FootballTeam;
@@ -13,6 +14,8 @@ public class FootballMatchControllerFX extends PanelNodeFX {
     protected FormationEditorActionableFX editor1;
     protected FormationEditorActionableFX editor2;
     protected GroupFX editorGroup;
+    protected GroupFX mainGroup;
+    protected ObsPreview obsPreview;
     
     public FootballMatchControllerFX(FootballTeam team1, FootballTeam team2) {
         super();
@@ -37,10 +40,21 @@ public class FootballMatchControllerFX extends PanelNodeFX {
             0.04,
             0.48
         }, javafx.geometry.Orientation.HORIZONTAL);
+
+        obsPreview = new ObsPreview();
+        obsPreview.start();
+
+        mainGroup = new GroupFX(FXCollections.observableArrayList(
+            obsPreview,
+            editorGroup
+        ), new double[]{
+            0.2,
+            0.8
+        }, javafx.geometry.Orientation.VERTICAL);
     }
 
     protected void setContent() {
-        this.setContentNode(editorGroup);
+        this.setContentNode(mainGroup);
     }
 
     public FootballMatch getMatch() {
