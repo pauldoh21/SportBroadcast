@@ -24,7 +24,7 @@ import match.FootballMatch;
 import obs.OBSController;
 import team.FootballTeam;
 import team.Team;
-import teamsheet.TeamsheetPDF;
+// import teamsheet.TeamsheetPDF;
 
 public class MainApp extends Application {
     @Override
@@ -89,8 +89,8 @@ public class MainApp extends Application {
         matchController.getMatch().initialiseBroadcast("localhost", 4455, "");
         matchController.getMatch().start();
 
-        TeamsheetPDF teamsheetPDF = new TeamsheetPDF(team1);
-        teamsheetPDF.generate();
+        // TeamsheetPDF teamsheetPDF = new TeamsheetPDF(team1);
+        // teamsheetPDF.generate();
 
         window.setContentNode(matchController);
         window.show();

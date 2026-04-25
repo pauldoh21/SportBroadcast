@@ -60,11 +60,11 @@ public class BaseWindowFX extends Stage {
         }
 
         // apply customizations
-        CustomCaption.useForStage(this, new CaptionConfiguration()
-                .setIconColor(Color.BLACK)  // set the icon/foreground color to black
-                .setCaptionDragRegion(menuBar)  // set the MenuBar as DragRegion to exclude the
-                                            // buttons automatically
-        );
+        // CustomCaption.useForStage(this, new CaptionConfiguration()
+        //         .setIconColor(Color.BLACK)  // set the icon/foreground color to black
+        //         .setCaptionDragRegion(menuBar)  // set the MenuBar as DragRegion to exclude the
+        //                                     // buttons automatically
+        // );
 
         menuBar.getMenus().addAll(new Menu("File"), new Menu("Edit"), new Menu("View"));
         root.setTop(menuBar);
