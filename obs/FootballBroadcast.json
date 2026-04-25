@@ -1,0 +1,2118 @@
+{
+    "name": "FootballBroadcast",
+    "DesktopAudioDevice1": {
+        "prev_ver": 536936449,
+        "name": "Desktop Audio",
+        "uuid": "49c05071-236b-47ea-b546-631dc5c64ec6",
+        "id": "wasapi_output_capture",
+        "versioned_id": "wasapi_output_capture",
+        "settings": {
+            "device_id": "default"
+        },
+        "mixers": 255,
+        "sync": 0,
+        "flags": 0,
+        "volume": 1.0,
+        "balance": 0.5,
+        "enabled": true,
+        "muted": false,
+        "push-to-mute": false,
+        "push-to-mute-delay": 0,
+        "push-to-talk": false,
+        "push-to-talk-delay": 0,
+        "hotkeys": {
+            "libobs.mute": [],
+            "libobs.unmute": [],
+            "libobs.push-to-mute": [],
+            "libobs.push-to-talk": []
+        },
+        "deinterlace_mode": 0,
+        "deinterlace_field_order": 0,
+        "monitoring_type": 0,
+        "private_settings": {}
+    },
+    "AuxAudioDevice1": {
+        "prev_ver": 536936449,
+        "name": "Mic/Aux",
+        "uuid": "a9568c0a-b5e7-40b4-8e73-0c352713333c",
+        "id": "wasapi_input_capture",
+        "versioned_id": "wasapi_input_capture",
+        "settings": {
+            "device_id": "default"
+        },
+        "mixers": 255,
+        "sync": 0,
+        "flags": 0,
+        "volume": 1.0,
+        "balance": 0.5,
+        "enabled": true,
+        "muted": false,
+        "push-to-mute": false,
+        "push-to-mute-delay": 0,
+        "push-to-talk": false,
+        "push-to-talk-delay": 0,
+        "hotkeys": {
+            "libobs.mute": [],
+            "libobs.unmute": [],
+            "libobs.push-to-mute": [],
+            "libobs.push-to-talk": []
+        },
+        "deinterlace_mode": 0,
+        "deinterlace_field_order": 0,
+        "monitoring_type": 0,
+        "private_settings": {}
+    },
+    "groups": [
+        {
+            "prev_ver": 536936449,
+            "name": "Scoreboard",
+            "uuid": "3bdc3c7c-c1e3-4998-91e7-74d444021b50",
+            "id": "group",
+            "versioned_id": "group",
+            "settings": {
+                "id_counter": 0,
+                "custom_size": true,
+                "cx": 1522,
+                "cy": 160,
+                "items": [
+                    {
+                        "name": "ScoreboardBack",
+                        "source_uuid": "ab65ed29-5faf-40b4-8f1f-7ed5b727b6c4",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "scale_ref": {
+                            "x": 1920.0,
+                            "y": 1080.0
+                        },
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 2,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 0.0,
+                            "y": 19.0
+                        },
+                        "pos_rel": {
+                            "x": -1.7777777910232544,
+                            "y": -0.9824073910713196
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "scale_rel": {
+                            "x": 0.5,
+                            "y": 0.5
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "bounds_rel": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "Team1_Back",
+                        "source_uuid": "472d27aa-07a2-437c-b296-a289a313fcb0",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "scale_ref": {
+                            "x": 3840.0,
+                            "y": 2160.0
+                        },
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 4,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 10.0,
+                            "y": 28.0
+                        },
+                        "pos_rel": {
+                            "x": -1.7685185670852661,
+                            "y": -0.9740740656852722
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "scale_rel": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "bounds_rel": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "Team1_Abbreviation",
+                        "source_uuid": "e1a253bd-10f4-46bf-a0c0-6298d87a09d2",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "scale_ref": {
+                            "x": 3840.0,
+                            "y": 2160.0
+                        },
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 3,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 20.0,
+                            "y": 0.0
+                        },
+                        "pos_rel": {
+                            "x": -1.7592592239379883,
+                            "y": -1.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "scale_rel": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "bounds_rel": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "Team2_Back",
+                        "source_uuid": "862d01e2-b1ab-431a-ad14-b33487d75a45",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "scale_ref": {
+                            "x": 3840.0,
+                            "y": 2160.0
+                        },
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 6,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 666.0,
+                            "y": 28.0
+                        },
+                        "pos_rel": {
+                            "x": -1.1611111164093018,
+                            "y": -0.9740740656852722
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "scale_rel": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "bounds_rel": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "Team2_Abbreviation",
+                        "source_uuid": "45d94b9d-100d-4577-acfb-c4f58063bd57",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "scale_ref": {
+                            "x": 3840.0,
+                            "y": 2160.0
+                        },
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 5,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 673.0,
+                            "y": 0.0
+                        },
+                        "pos_rel": {
+                            "x": -1.1546295881271362,
+                            "y": -1.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "scale_rel": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "bounds_rel": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "Team1_Score",
+                        "source_uuid": "69ebdde3-c362-4ee9-b49f-1fb59eb71772",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "scale_ref": {
+                            "x": 3840.0,
+                            "y": 2160.0
+                        },
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 7,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 298.0,
+                            "y": 10.0
+                        },
+                        "pos_rel": {
+                            "x": -1.5018517971038818,
+                            "y": -0.9907407164573669
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "scale_rel": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "bounds_rel": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "Dash",
+                        "source_uuid": "16258945-e831-4b43-9348-2e3883dbf833",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "scale_ref": {
+                            "x": 3840.0,
+                            "y": 2160.0
+                        },
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 9,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 395.0,
+                            "y": 0.0
+                        },
+                        "pos_rel": {
+                            "x": -1.4120370149612427,
+                            "y": -1.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "scale_rel": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "bounds_rel": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "Team2_Score",
+                        "source_uuid": "6a572ed3-3150-42e4-a328-23455034dfb3",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "scale_ref": {
+                            "x": 3840.0,
+                            "y": 2160.0
+                        },
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 8,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 493.0,
+                            "y": 10.0
+                        },
+                        "pos_rel": {
+                            "x": -1.3212963342666626,
+                            "y": -0.9907407164573669
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "scale_rel": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "bounds_rel": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "Time_Back",
+                        "source_uuid": "d281648b-b718-4529-920d-1e6d71f3be15",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "scale_ref": {
+                            "x": 3840.0,
+                            "y": 2160.0
+                        },
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 10,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 992.0,
+                            "y": 28.0
+                        },
+                        "pos_rel": {
+                            "x": -0.8592592477798462,
+                            "y": -0.9740740656852722
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "scale_rel": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "bounds_rel": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "Time_Text",
+                        "source_uuid": "80ee8a40-bc42-4d5b-bb13-06f03b782ed1",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "scale_ref": {
+                            "x": 3840.0,
+                            "y": 2160.0
+                        },
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 12,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 1005.0,
+                            "y": 23.0
+                        },
+                        "pos_rel": {
+                            "x": -0.8472222089767456,
+                            "y": -0.9787036776542664
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "scale_rel": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "bounds": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "bounds_rel": {
+                            "x": 0.0009259259095415473,
+                            "y": 0.0009259259095415473
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "AddedTime_Back",
+                        "source_uuid": "1706232f-9665-4d61-b517-cf0c7d0db844",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "scale_ref": {
+                            "x": 3840.0,
+                            "y": 2160.0
+                        },
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 11,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 1315.0,
+                            "y": 19.0
+                        },
+                        "pos_rel": {
+                            "x": -0.5601851940155029,
+                            "y": -0.9824073910713196
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "scale_rel": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "bounds_rel": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "AddedTime_Text",
+                        "source_uuid": "9de27b53-ada5-4e00-be17-c64d14df5b39",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "scale_ref": {
+                            "x": 3840.0,
+                            "y": 2160.0
+                        },
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 13,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 1322.0,
+                            "y": 23.0
+                        },
+                        "pos_rel": {
+                            "x": -0.5537037253379822,
+                            "y": -0.9787036776542664
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "scale_rel": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "bounds_rel": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    }
+                ]
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {
+                "libobs.show_scene_item.2": [],
+                "libobs.hide_scene_item.2": [],
+                "libobs.show_scene_item.4": [],
+                "libobs.hide_scene_item.4": [],
+                "libobs.show_scene_item.3": [],
+                "libobs.hide_scene_item.3": [],
+                "libobs.show_scene_item.6": [],
+                "libobs.hide_scene_item.6": [],
+                "libobs.show_scene_item.5": [],
+                "libobs.hide_scene_item.5": [],
+                "libobs.show_scene_item.7": [],
+                "libobs.hide_scene_item.7": [],
+                "libobs.show_scene_item.9": [],
+                "libobs.hide_scene_item.9": [],
+                "libobs.show_scene_item.8": [],
+                "libobs.hide_scene_item.8": [],
+                "libobs.show_scene_item.10": [],
+                "libobs.hide_scene_item.10": [],
+                "libobs.show_scene_item.12": [],
+                "libobs.hide_scene_item.12": [],
+                "libobs.show_scene_item.11": [],
+                "libobs.hide_scene_item.11": [],
+                "libobs.show_scene_item.13": [],
+                "libobs.hide_scene_item.13": []
+            },
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "canvas_uuid": "6c69626f-6273-4c00-9d88-c5136d61696e",
+            "private_settings": {},
+            "filters": [
+                {
+                    "prev_ver": 536936449,
+                    "name": "Shadow",
+                    "uuid": "428534bc-7e76-4ddd-935d-e72ae419d836",
+                    "id": "obs_shadow_filter",
+                    "versioned_id": "obs_shadow_filter",
+                    "settings": {
+                        "glow_size": 7.0,
+                        "glow_intensity": 101.7,
+                        "glow_fill_color": 2685473041,
+                        "glow_offset_distance": 2.0,
+                        "threshold_outer": 100.0
+                    },
+                    "mixers": 0,
+                    "sync": 0,
+                    "flags": 0,
+                    "volume": 1.0,
+                    "balance": 0.5,
+                    "enabled": true,
+                    "muted": false,
+                    "push-to-mute": false,
+                    "push-to-mute-delay": 0,
+                    "push-to-talk": false,
+                    "push-to-talk-delay": 0,
+                    "hotkeys": {},
+                    "deinterlace_mode": 0,
+                    "deinterlace_field_order": 0,
+                    "monitoring_type": 0,
+                    "private_settings": {}
+                }
+            ]
+        }
+    ],
+    "scene_order": [
+        {
+            "name": "Scene"
+        }
+    ],
+    "current_scene": "Scene",
+    "current_program_scene": "Scene",
+    "canvases": [],
+    "current_transition": "Fade",
+    "transition_duration": 300,
+    "transitions": [],
+    "quick_transitions": [
+        {
+            "name": "Cut",
+            "duration": 300,
+            "hotkeys": [],
+            "id": 1,
+            "fade_to_black": false
+        },
+        {
+            "name": "Fade",
+            "duration": 300,
+            "hotkeys": [],
+            "id": 2,
+            "fade_to_black": false
+        },
+        {
+            "name": "Fade",
+            "duration": 300,
+            "hotkeys": [],
+            "id": 3,
+            "fade_to_black": true
+        }
+    ],
+    "saved_projectors": [],
+    "preview_locked": false,
+    "scaling_enabled": false,
+    "scaling_level": -20,
+    "scaling_off_x": 0.0,
+    "scaling_off_y": 0.0,
+    "virtual-camera": {
+        "type2": 4
+    },
+    "modules": {
+        "scripts-tool": [],
+        "output-timer": {
+            "streamTimerHours": 0,
+            "streamTimerMinutes": 0,
+            "streamTimerSeconds": 30,
+            "recordTimerHours": 0,
+            "recordTimerMinutes": 0,
+            "recordTimerSeconds": 30,
+            "autoStartStreamTimer": false,
+            "autoStartRecordTimer": false,
+            "pauseRecordTimer": true
+        },
+        "auto-scene-switcher": {
+            "interval": 300,
+            "non_matching_scene": "",
+            "switch_if_not_matching": false,
+            "active": false,
+            "switches": []
+        },
+        "captions": {
+            "source": "",
+            "enabled": false,
+            "lang_id": 2057,
+            "provider": "mssapi"
+        }
+    },
+    "resolution": {
+        "x": 3840,
+        "y": 2160
+    },
+    "version": 2,
+    "sources": [
+        {
+            "prev_ver": 536936449,
+            "name": "AddedTime_Back",
+            "uuid": "1706232f-9665-4d61-b517-cf0c7d0db844",
+            "id": "color_source",
+            "versioned_id": "color_source_v3",
+            "settings": {
+                "color": 4280625531,
+                "width": 207,
+                "height": 130
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {},
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936449,
+            "name": "AddedTime_Text",
+            "uuid": "9de27b53-ada5-4e00-be17-c64d14df5b39",
+            "id": "text_gdiplus",
+            "versioned_id": "text_gdiplus_v3",
+            "settings": {
+                "text": "+10",
+                "font": {
+                    "face": "Arial",
+                    "style": "Bold",
+                    "size": 128,
+                    "flags": 1
+                },
+                "align": "center",
+                "valign": "center"
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {},
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936449,
+            "name": "Dash",
+            "uuid": "16258945-e831-4b43-9348-2e3883dbf833",
+            "id": "text_gdiplus",
+            "versioned_id": "text_gdiplus_v3",
+            "settings": {
+                "text": "-",
+                "extents": true,
+                "font": {
+                    "face": "Arial",
+                    "style": "Bold",
+                    "size": 156,
+                    "flags": 1
+                },
+                "align": "center",
+                "valign": "center",
+                "color": 0,
+                "extents_cx": 200,
+                "extents_cy": 150
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {},
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936449,
+            "name": "Scene",
+            "uuid": "0b5e509e-63f8-41bd-97bb-520a9d3774a2",
+            "id": "scene",
+            "versioned_id": "scene",
+            "settings": {
+                "id_counter": 15,
+                "custom_size": false,
+                "items": [
+                    {
+                        "name": "TempBackground",
+                        "source_uuid": "73c90b79-0d86-4b21-88b8-600056926023",
+                        "visible": true,
+                        "locked": true,
+                        "rot": 0.0,
+                        "scale_ref": {
+                            "x": 1920.0,
+                            "y": 1080.0
+                        },
+                        "align": 5,
+                        "bounds_type": 2,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 1,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "pos_rel": {
+                            "x": -1.7777777910232544,
+                            "y": -1.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "scale_rel": {
+                            "x": 0.5,
+                            "y": 0.5
+                        },
+                        "bounds": {
+                            "x": 3840.0,
+                            "y": 2160.0
+                        },
+                        "bounds_rel": {
+                            "x": 3.555555582046509,
+                            "y": 2.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "ScoreboardBack",
+                        "source_uuid": "ab65ed29-5faf-40b4-8f1f-7ed5b727b6c4",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "scale_ref": {
+                            "x": 1920.0,
+                            "y": 1080.0
+                        },
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 2,
+                        "group_item_backup": true,
+                        "pos": {
+                            "x": 51.0001220703125,
+                            "y": 42.000732421875
+                        },
+                        "pos_rel": {
+                            "x": -1.7305554151535034,
+                            "y": -0.9611104130744934
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "scale_rel": {
+                            "x": 0.5,
+                            "y": 0.5
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "bounds_rel": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "Team1_Back",
+                        "source_uuid": "472d27aa-07a2-437c-b296-a289a313fcb0",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "scale_ref": {
+                            "x": 3840.0,
+                            "y": 2160.0
+                        },
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 4,
+                        "group_item_backup": true,
+                        "pos": {
+                            "x": 61.0001220703125,
+                            "y": 51.000732421875
+                        },
+                        "pos_rel": {
+                            "x": -1.7212961912155151,
+                            "y": -0.952777087688446
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "scale_rel": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "bounds_rel": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "Team1_Abbreviation",
+                        "source_uuid": "e1a253bd-10f4-46bf-a0c0-6298d87a09d2",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "scale_ref": {
+                            "x": 3840.0,
+                            "y": 2160.0
+                        },
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 3,
+                        "group_item_backup": true,
+                        "pos": {
+                            "x": 71.0001220703125,
+                            "y": 23.000732421875
+                        },
+                        "pos_rel": {
+                            "x": -1.7120369672775269,
+                            "y": -0.9787030220031738
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "scale_rel": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "bounds_rel": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "Team2_Back",
+                        "source_uuid": "862d01e2-b1ab-431a-ad14-b33487d75a45",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "scale_ref": {
+                            "x": 3840.0,
+                            "y": 2160.0
+                        },
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 6,
+                        "group_item_backup": true,
+                        "pos": {
+                            "x": 717.0001220703125,
+                            "y": 51.000732421875
+                        },
+                        "pos_rel": {
+                            "x": -1.1138887405395508,
+                            "y": -0.952777087688446
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "scale_rel": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "bounds_rel": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "Team2_Abbreviation",
+                        "source_uuid": "45d94b9d-100d-4577-acfb-c4f58063bd57",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "scale_ref": {
+                            "x": 3840.0,
+                            "y": 2160.0
+                        },
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 5,
+                        "group_item_backup": true,
+                        "pos": {
+                            "x": 724.0001220703125,
+                            "y": 23.000732421875
+                        },
+                        "pos_rel": {
+                            "x": -1.1074073314666748,
+                            "y": -0.9787030220031738
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "scale_rel": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "bounds_rel": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "Team1_Score",
+                        "source_uuid": "69ebdde3-c362-4ee9-b49f-1fb59eb71772",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "scale_ref": {
+                            "x": 3840.0,
+                            "y": 2160.0
+                        },
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 7,
+                        "group_item_backup": true,
+                        "pos": {
+                            "x": 349.0001220703125,
+                            "y": 33.000732421875
+                        },
+                        "pos_rel": {
+                            "x": -1.4546295404434204,
+                            "y": -0.9694437384605408
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "scale_rel": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "bounds_rel": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "Dash",
+                        "source_uuid": "16258945-e831-4b43-9348-2e3883dbf833",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "scale_ref": {
+                            "x": 3840.0,
+                            "y": 2160.0
+                        },
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 9,
+                        "group_item_backup": true,
+                        "pos": {
+                            "x": 446.0,
+                            "y": 23.000732421875
+                        },
+                        "pos_rel": {
+                            "x": -1.3648147583007812,
+                            "y": -0.9787030220031738
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "scale_rel": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "bounds_rel": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "Team2_Score",
+                        "source_uuid": "6a572ed3-3150-42e4-a328-23455034dfb3",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "scale_ref": {
+                            "x": 3840.0,
+                            "y": 2160.0
+                        },
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 8,
+                        "group_item_backup": true,
+                        "pos": {
+                            "x": 544.0001220703125,
+                            "y": 33.000732421875
+                        },
+                        "pos_rel": {
+                            "x": -1.2740739583969116,
+                            "y": -0.9694437384605408
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "scale_rel": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "bounds_rel": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "Time_Back",
+                        "source_uuid": "d281648b-b718-4529-920d-1e6d71f3be15",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "scale_ref": {
+                            "x": 3840.0,
+                            "y": 2160.0
+                        },
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 10,
+                        "group_item_backup": true,
+                        "pos": {
+                            "x": 1043.0001220703125,
+                            "y": 51.000732421875
+                        },
+                        "pos_rel": {
+                            "x": -0.81203693151474,
+                            "y": -0.952777087688446
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "scale_rel": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "bounds_rel": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "Time_Text",
+                        "source_uuid": "80ee8a40-bc42-4d5b-bb13-06f03b782ed1",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "scale_ref": {
+                            "x": 3840.0,
+                            "y": 2160.0
+                        },
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 12,
+                        "group_item_backup": true,
+                        "pos": {
+                            "x": 1056.0001220703125,
+                            "y": 46.000732421875
+                        },
+                        "pos_rel": {
+                            "x": -0.7999998927116394,
+                            "y": -0.957406759262085
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "scale_rel": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "bounds": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "bounds_rel": {
+                            "x": 0.0009259259095415473,
+                            "y": 0.0009259259095415473
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "AddedTime_Back",
+                        "source_uuid": "1706232f-9665-4d61-b517-cf0c7d0db844",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "scale_ref": {
+                            "x": 3840.0,
+                            "y": 2160.0
+                        },
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 11,
+                        "group_item_backup": true,
+                        "pos": {
+                            "x": 1366.0001220703125,
+                            "y": 42.000732421875
+                        },
+                        "pos_rel": {
+                            "x": -0.5129628777503967,
+                            "y": -0.9611104130744934
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "scale_rel": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "bounds_rel": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "AddedTime_Text",
+                        "source_uuid": "9de27b53-ada5-4e00-be17-c64d14df5b39",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "scale_ref": {
+                            "x": 3840.0,
+                            "y": 2160.0
+                        },
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 13,
+                        "group_item_backup": true,
+                        "pos": {
+                            "x": 1373.0001220703125,
+                            "y": 46.000732421875
+                        },
+                        "pos_rel": {
+                            "x": -0.5064813494682312,
+                            "y": -0.957406759262085
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "scale_rel": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "bounds_rel": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "Scoreboard",
+                        "source_uuid": "3bdc3c7c-c1e3-4998-91e7-74d444021b50",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "scale_ref": {
+                            "x": 3840.0,
+                            "y": 2160.0
+                        },
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 14,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 51.0001220703125,
+                            "y": 23.000732421875
+                        },
+                        "pos_rel": {
+                            "x": -1.7305554151535034,
+                            "y": -0.9787030220031738
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "scale_rel": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "bounds_rel": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {
+                            "collapsed": false
+                        }
+                    }
+                ]
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {
+                "OBSBasic.SelectScene": [],
+                "libobs.show_scene_item.1": [],
+                "libobs.hide_scene_item.1": [],
+                "libobs.show_scene_item.14": [],
+                "libobs.hide_scene_item.14": []
+            },
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "canvas_uuid": "6c69626f-6273-4c00-9d88-c5136d61696e",
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936449,
+            "name": "ScoreboardBack",
+            "uuid": "ab65ed29-5faf-40b4-8f1f-7ed5b727b6c4",
+            "id": "color_source",
+            "versioned_id": "color_source_v3",
+            "settings": {
+                "color": 4293651435,
+                "width": 1315,
+                "height": 130
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {},
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936449,
+            "name": "Team1_Abbreviation",
+            "uuid": "e1a253bd-10f4-46bf-a0c0-6298d87a09d2",
+            "id": "text_gdiplus",
+            "versioned_id": "text_gdiplus_v3",
+            "settings": {
+                "text": "MAL",
+                "font": {
+                    "face": "Tahoma",
+                    "style": "Bold",
+                    "size": 156,
+                    "flags": 1
+                },
+                "align": "center",
+                "valign": "center",
+                "color": 15876
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {},
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936449,
+            "name": "Team1_Back",
+            "uuid": "472d27aa-07a2-437c-b296-a289a313fcb0",
+            "id": "color_source",
+            "versioned_id": "color_source_v3",
+            "settings": {
+                "color": 4280588241,
+                "width": 312,
+                "height": 111
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {},
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936449,
+            "name": "Team1_Score",
+            "uuid": "69ebdde3-c362-4ee9-b49f-1fb59eb71772",
+            "id": "text_gdiplus",
+            "versioned_id": "text_gdiplus_v3",
+            "settings": {
+                "extents": true,
+                "text": "0",
+                "font": {
+                    "face": "Arial",
+                    "style": "Bold",
+                    "size": 156,
+                    "flags": 1
+                },
+                "align": "center",
+                "valign": "center",
+                "color": 0,
+                "extents_cx": 200,
+                "extents_cy": 150
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {},
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936449,
+            "name": "Team2_Abbreviation",
+            "uuid": "45d94b9d-100d-4577-acfb-c4f58063bd57",
+            "id": "text_gdiplus",
+            "versioned_id": "text_gdiplus_v3",
+            "settings": {
+                "text": "DUN",
+                "font": {
+                    "face": "Tahoma",
+                    "style": "Bold",
+                    "size": 156,
+                    "flags": 1
+                },
+                "align": "center",
+                "valign": "center"
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {},
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936449,
+            "name": "Team2_Back",
+            "uuid": "862d01e2-b1ab-431a-ad14-b33487d75a45",
+            "id": "color_source",
+            "versioned_id": "color_source_v3",
+            "settings": {
+                "color": 4291600974,
+                "width": 312,
+                "height": 111
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {},
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936449,
+            "name": "Team2_Score",
+            "uuid": "6a572ed3-3150-42e4-a328-23455034dfb3",
+            "id": "text_gdiplus",
+            "versioned_id": "text_gdiplus_v3",
+            "settings": {
+                "text": "0",
+                "extents": true,
+                "font": {
+                    "face": "Arial",
+                    "style": "Bold",
+                    "size": 156,
+                    "flags": 1
+                },
+                "align": "center",
+                "valign": "center",
+                "color": 0,
+                "extents_cx": 200,
+                "extents_cy": 150
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {},
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936449,
+            "name": "TempBackground",
+            "uuid": "73c90b79-0d86-4b21-88b8-600056926023",
+            "id": "image_source",
+            "versioned_id": "image_source",
+            "settings": {
+                "file": "C:/Users/pauld/Pictures/Screenshots/Screenshot 2026-01-19 132330.png"
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {},
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936449,
+            "name": "Time_Back",
+            "uuid": "d281648b-b718-4529-920d-1e6d71f3be15",
+            "id": "color_source",
+            "versioned_id": "color_source_v3",
+            "settings": {
+                "color": 4278190080,
+                "width": 312,
+                "height": 111
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {},
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936449,
+            "name": "Time_Text",
+            "uuid": "80ee8a40-bc42-4d5b-bb13-06f03b782ed1",
+            "id": "text_gdiplus",
+            "versioned_id": "text_gdiplus_v3",
+            "settings": {
+                "text": "00:04",
+                "font": {
+                    "face": "Arial",
+                    "style": "Bold",
+                    "size": 128,
+                    "flags": 1
+                },
+                "align": "center",
+                "valign": "center"
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {},
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        }
+    ]
+}
