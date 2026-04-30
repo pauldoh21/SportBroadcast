@@ -1,31 +1,72 @@
 <script setup lang="ts">
-const state = reactive({
-    data: "",
-    visible: false
+import gsap from 'gsap'
+import { useSocket } from '~/composables/useSocket'
+const { register } = useSocket()
+
+const store = reactive({
+    visible: false,
+    goals: {
+        dun: 0,
+        mal: 0
+    }
+})
+const matchScorecardRef = useTemplateRef('matchScorecardRef')
+
+register(Overlays.MatchScorecard, (data) => {
+    if (data.action === "play") play(data)
+    if (data.action === "stop") stop()
 })
 
-const { status, data, send, open, close, ws } = useWebSocket('ws://localhost:3000/_ws')
+const play = (data: any) => {
+    store.goals.dun = data.goals?.dun ?? 0
+    store.goals.mal = data.goals?.mal ?? 0
+    store.visible = true
+    nextTick(() => {
+        if (matchScorecardRef) {
+            gsap.fromTo(
+                matchScorecardRef.value,
+                { opacity: 0, y: -10 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.5,
+                    ease: "power2.out",
+                },
+            )
+        }
+    })
+}
 
-watch(data, () => {
-    const parse = JSON.parse(data.value)
-    state.data = parse.data
-    state.visible = parse.visible
-})
-
+const stop = () => {
+    nextTick(() => {
+        if (matchScorecardRef) {
+            gsap.fromTo(
+                matchScorecardRef.value,
+                { opacity: 1, y: 0, },
+                {
+                    opacity: 0,
+                    y: -10,
+                    duration: 0.5,
+                    ease: "power2.out",
+                    onComplete: () => store.visible = false
+                },
+            )
+        }
+    })
+}
 </script>
 
 <template>
-    <div v-if="state.visible === true" class="data">
-        <p>Data Driven Component (MatchScorecard): {{ state.data }}</p>
+    <div v-if="store.visible === true" class="data" ref="matchScorecardRef">
+        <p>DUN {{ store.goals.dun }}-{{ store.goals.mal }} MAL</p>
     </div>
 </template>
 
-<style>
+<style scoped>
 .data {
-    background-color: rebeccapurple;
-
     p {
         color: aliceblue;
+        background-color: rebeccapurple;
     }
 }
 </style>

@@ -1,0 +1,4 @@
+<template>
+  <MatchScorecard />
+  <Penalties />
+</template>

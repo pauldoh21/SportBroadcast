@@ -3,7 +3,6 @@ const channel = "overlays";
 export default defineWebSocketHandler({
     open(peer) {
         console.log(`event=open id=${peer.id}`);
-        peer.send({ data: peer.peers.size, visible: false });
         peer.subscribe(channel);
     },
 
@@ -13,7 +12,7 @@ export default defineWebSocketHandler({
     },
 
     close(peer, { code, reason }) {
-        console.log(`event=close code=${code} reason=${reason}`);
+        console.log(`event=close id=${peer.id} code=${code} reason=${reason}`);
         peer.unsubscribe(channel);
     },
 
