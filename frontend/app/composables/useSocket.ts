@@ -7,7 +7,7 @@ export type Overlay = (typeof Overlays)[keyof typeof Overlays]
 
 const handlers: Partial<Record<Overlay, (payload: any) => void>> = {}
 
-const { status, data } = useWebSocket('ws://localhost:3000/_ws')
+const { status, data, send } = useWebSocket('ws://localhost:3000/_ws')
 
 watch(data, () => {
     const { overlay, ...rest } = JSON.parse(data.value)
@@ -26,7 +26,10 @@ export const useSocket = () => {
     const register = (overlay: Overlay, func: (payload: any) => void) => {
         handlers[overlay] = func
     }
-    return { register }
+    const publish = (data: unknown) => {
+        send(JSON.stringify(data))
+    }
+    return { register, publish }
 }
 
 const isOverlay = (overlay: string): overlay is Overlay => {

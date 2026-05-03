@@ -1,0 +1,243 @@
+{
+  "name": "Y'morzin Cup Final",
+  "teams": {
+    "dunterlie_dynamos": {
+      "name": "Dunterlie Dynamos",
+      "players": [
+        {
+          "forename": "Callum",
+          "surname": "Holmes",
+          "number": 1,
+          "position": ""
+        },
+        {
+          "forename": "Calvin",
+          "surname": "Drouet",
+          "number": 2,
+          "position": ""
+        },
+        {
+          "forename": "Rory",
+          "surname": "Ireland",
+          "number": 3,
+          "position": ""
+        },
+        {
+          "forename": "Torin",
+          "surname": "Kane",
+          "number": 4,
+          "position": ""
+        },
+        {
+          "forename": "Jamie",
+          "surname": "Dodd",
+          "number": 5,
+          "position": ""
+        },
+        {
+          "forename": "Harrison",
+          "surname": "Gillespie",
+          "number": 6,
+          "position": ""
+        },
+        {
+          "forename": "Ross",
+          "surname": "Joiner",
+          "number": 7,
+          "position": ""
+        },
+        {
+          "forename": "Cammy",
+          "surname": "Hay",
+          "number": 8,
+          "position": ""
+        },
+        {
+          "forename": "Jeremiah",
+          "surname": "Lawson",
+          "number": 9,
+          "position": ""
+        },
+        {
+          "forename": "Ewan",
+          "surname": "Hunter",
+          "number": 10,
+          "position": ""
+        },
+        {
+          "forename": "Mark",
+          "surname": "Harty",
+          "number": 11,
+          "position": ""
+        },
+        {
+          "forename": "Ben",
+          "surname": "Grant",
+          "number": 12,
+          "position": ""
+        },
+        {
+          "forename": "Jack",
+          "surname": "McGinty",
+          "number": 13,
+          "position": ""
+        },
+        {
+          "forename": "Matthew",
+          "surname": "Blyth",
+          "number": 14,
+          "position": ""
+        },
+        {
+          "forename": "Alex",
+          "surname": "O'Donnell",
+          "number": 15,
+          "position": ""
+        },
+        {
+          "forename": "Alex",
+          "surname": "Moran",
+          "number": 16,
+          "position": ""
+        },
+        {
+          "forename": "Drew",
+          "surname": "Lennie Maynard",
+          "number": 17,
+          "position": ""
+        },
+        {
+          "forename": "Patrick",
+          "surname": "Doherty",
+          "number": 18,
+          "position": ""
+        },
+        {
+          "forename": "John",
+          "surname": "Crilley",
+          "number": 19,
+          "position": ""
+        },
+        {
+          "forename": "Dominic",
+          "surname": "Collins",
+          "number": 20,
+          "position": ""
+        },
+        {
+          "forename": "Finnghuala",
+          "surname": "Docherty",
+          "number": 21,
+          "position": ""
+        }
+      ]
+    },
+    "ac_malones": {
+      "name": "AC Malones",
+      "players": [
+        {
+          "forename": "Paul",
+          "surname": "Doherty",
+          "number": 1,
+          "position": ""
+        },
+        {
+          "forename": "Stephen",
+          "surname": "Gallagher",
+          "number": 2,
+          "position": ""
+        },
+        {
+          "forename": "Andy",
+          "surname": "McGraw",
+          "number": 3,
+          "position": ""
+        },
+        {
+          "forename": "Darren",
+          "surname": "Doherty",
+          "number": 4,
+          "position": ""
+        },
+        {
+          "forename": "Joe",
+          "surname": "Donnelly",
+          "number": 5,
+          "position": ""
+        },
+        {
+          "forename": "Eoghan",
+          "surname": "O'Donnell",
+          "number": 6,
+          "position": ""
+        },
+        {
+          "forename": "Haaris",
+          "surname": "Sattar",
+          "number": 7,
+          "position": ""
+        },
+        {
+          "forename": "John",
+          "surname": "Mahon",
+          "number": 8,
+          "position": ""
+        },
+        {
+          "forename": "Paul",
+          "surname": "McBride",
+          "number": 9,
+          "position": ""
+        },
+        {
+          "forename": "Thomas",
+          "surname": "Scott",
+          "number": 10,
+          "position": ""
+        },
+        {
+          "forename": "Micky",
+          "surname": "Mullen",
+          "number": 11,
+          "position": ""
+        },
+        {
+          "forename": "James",
+          "surname": "Orr",
+          "number": 12,
+          "position": ""
+        },
+        {
+          "forename": "Michael",
+          "surname": "McLaughlin",
+          "number": 13,
+          "position": ""
+        },
+        {
+          "forename": "James",
+          "surname": "Hazlett",
+          "number": 14,
+          "position": ""
+        },
+        {
+          "forename": "Gerry",
+          "surname": "Morrin",
+          "number": 15,
+          "position": ""
+        },
+        {
+          "forename": "Danny",
+          "surname": "Kelly",
+          "number": 16,
+          "position": ""
+        },
+        {
+          "forename": "Jay",
+          "surname": "Gunn",
+          "number": 17,
+          "position": ""
+        }
+      ]
+    }
+  }
+}
