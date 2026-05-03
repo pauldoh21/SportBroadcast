@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Football Scorecard – Default</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap" rel="stylesheet" />
+  <link href="https://fonts.cdnfonts.com/css/haettenschweiler" rel="stylesheet" />
+  <style>
+    :root {
+      --font-display: 'DM Serif Text', serif;
+      --font-secondary: 'Haettenschweiler', sans-serif;
+      --text-color: #dcebf4;
+      --muted-color: rgba(0,0,0,0.35);
+      --muted-text: rgba(0,0,0,0.45);
+      --home-colour-1: #73AED8;
+      --home-colour-2: #f5f5f5;
+      --away-colour-1: #F5B53E;
+      --away-colour-2: #486745;
+      --ribbon-colour: #741920;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      font-family: var(--font-display);
+      color: var(--text-color);
+      padding: 16px;
+      overflow: visible;
+    }
+
+    /* ── Outer wrapper ── */
+    .broadcast {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      transform-origin: top left;
+      transform: translateX(20px) scale(1.5);
+      position: relative;
+      overflow: visible;
+      padding-inline: 40px;
+    }
+
+    /* ── Ribbon box (decorative skewed stripes behind everything) ── */
+    .ribbon-box {
+      position: absolute;
+      left: 5px;
+      right: 5px;
+      transform: skewX(-30deg);
+      transform-origin: center;
+      overflow: visible;
+      height: 100%;
+      z-index: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10%;
+    }
+
+    .ribbon {
+      background: var(--ribbon-colour);
+      width: 100%;
+      height: 30%;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.35);
+    }
+
+    /* ── Main scorecard panel ── */
+    .scorecard {
+      display: flex;
+      align-items: stretch;
+      height: 90px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.35);
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── Shared panel base ── */
+    .panel {
+      background: #ECDFC5;
+      position: relative;
+      display: flex;
+      overflow: hidden;
+      gap: 10px;
+    }
+
+    /* ── Home team panel ── */
+    .team-home {
+      position: relative;
+      color: var(--home-colour-2);
+    }
+
+    .team-home-background {
+      position: absolute;
+      inset: 0;
+      background: var(--home-colour-1);
+      z-index: 0;
+    }
+
+    .team-home::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background: linear-gradient(90deg, rgba(0,0,0,0) 55%, rgb(0,0,0));
+      mix-blend-mode: soft-light;
+    }
+
+    /* ── Away team panel ── */
+    .team-away {
+      position: relative;
+      justify-content: flex-end;
+      color: var(--away-colour-2);
+    }
+
+    .team-away-background {
+      position: absolute;
+      inset: 0;
+      background: var(--away-colour-1);
+      z-index: 0;
+    }
+
+    .team-away::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background: linear-gradient(90deg, rgb(0,0,0), rgba(0,0,0,0) 55%);
+      mix-blend-mode: overlay;
+    }
+
+    /* Ensure content sits above the absolute background divs */
+    .team-home > :not(.team-home-background),
+    .team-away > :not(.team-away-background) {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ── Colour swatch (kit colour square) ── */
+    .kit-swatch {
+      width: 100%;
+      height: 100%;
+      flex-shrink: 0;
+    }
+
+    .kit-swatch.dun { background: var(--home-colour-2); }
+    .kit-swatch.mal { background: var(--away-colour-2); }
+
+    .kit-swatches {
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      height: 100%;
+      width: 30px;
+    }
+
+    /* ── Team abbreviation ── */
+    .team-abbr {
+      line-height: 1;
+      letter-spacing: 0.02em;
+      z-index: 1;
+      font-family: var(--font-secondary);
+      font-size: 85px;
+    }
+
+    /* ── Score row ── */
+    .score-row {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .score {
+      font-size: 82px;
+      font-style: italic;
+      color: var(--text-color);
+      min-width: 32px;
+      text-align: center;
+    }
+
+    .home-score {
+      margin-left: 100px;
+      margin-right: 70px;
+    }
+
+    .away-score {
+      margin-left: 70px;
+      margin-right: 100px;
+    }
+
+    /* ── Centre league badge ── */
+    .league-badge {
+      transform-origin: center;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%) scale(1.15);
+      height: 100%;
+      z-index: 10;
+    }
+
+    .league-badge img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    /* ── Timer box ── */
+    .timer-box {
+      background: #ffffff;
+      height: 90px;
+      min-width: 250px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.35);
+      position: relative;
+      z-index: 1;
+    }
+
+    .timer-text {
+      font-size: 72px;
+      color: #000000;
+      letter-spacing: 0.04em;
+      line-height: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="broadcast">
+    <div class="ribbon-box">
+      <div class="ribbon"></div>
+      <div class="ribbon"></div>
+    </div>
+
+    <!-- ── Main scorecard ── -->
+    <div class="scorecard">
+
+      <!-- Home: Dunterlie Dynamos -->
+      <div class="panel team-home">
+        <div class="team-home-background"></div>
+        <div class="kit-swatches">
+          <div class="kit-swatch dun"></div>
+          <div class="kit-swatch dun-bottom"></div>
+        </div>
+        <span class="team-abbr">DUN</span>
+        <div class="score-row">
+          <div class="score home-score">2</div>
+        </div>
+      </div>
+
+      <div class="league-badge">
+        <img src="../jmBall.png" alt="League Badge" />
+      </div>
+
+      <!-- Away: AC Malones -->
+      <div class="panel team-away">
+        <div class="team-away-background"></div>
+        <div class="score-row">
+          <div class="score away-score">1</div>
+        </div>
+        <span class="team-abbr">MAL</span>
+        <div class="kit-swatches">
+          <div class="kit-swatch mal"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── Timer box ── -->
+    <div class="timer-box">
+      <span class="timer-text timer">55:00</span>
+    </div>
+
+  </div>
+
+  <script>
+    let totalSeconds = 55 * 60;
+    const timerEl = document.querySelectorAll('.timer');
+
+    function pad(n) { return String(n).padStart(2, '0'); }
+
+    function tick() {
+      if (totalSeconds > 90 * 60) {
+        timerEl.forEach(el => el.textContent = 'FT');
+        return;
+      }
+      const mins = Math.floor(totalSeconds / 60);
+      const secs = totalSeconds % 60;
+      timerEl.forEach(el => el.textContent = pad(mins) + ':' + pad(secs));
+      totalSeconds++;
+    }
+
+    tick();
+    setInterval(tick, 1000);
+  </script>
+
+</body>
+</html>

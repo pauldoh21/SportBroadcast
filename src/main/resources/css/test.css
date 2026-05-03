@@ -1,0 +1,418 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap');
+@import url('https://fonts.cdnfonts.com/css/haettenschweiler');
+
+:root {
+  --font-display: 'DM Serif Text', serif;
+  --font-secondary: 'Haettenschweiler', sans-serif;
+  --text-color: #dcebf4;
+  --muted-color: rgba(0,0,0,0.35);
+  --muted-text: rgba(0,0,0,0.45);
+  --home-colour-1: #73AED8;
+  --home-colour-2: #f5f5f5;
+  --away-colour-1: #F5B53E;
+  --away-colour-2: #486745;
+  --ribbon-colour: #741920;
+  --large-scoreboard-x-padding: 40px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  font-family: var(--font-display);
+  color: var(--text-color);
+  padding: 16px;
+  overflow: visible;
+}
+
+/* ── Outer wrapper ── */
+.broadcast {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  transform-origin: top left;
+  transform: translateX(20px) scale(var(--ui-scale, 1.5));
+  position: relative;
+  overflow: visible;
+  padding-inline: 40px;
+}
+
+.broadcast-large {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 100px;
+  margin: 0 auto;
+  width: max-content;
+  overflow: visible;
+  padding-inline: 90px;
+  z-index: 5;
+  transform-origin: bottom center;
+  transform: scale(var(--ui-scale, 1.5));
+}
+
+
+/* ── Main scorecard panel ── */
+.scorecard {
+  display: flex;
+  align-items: stretch;
+  height: 90px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.35);
+  position: relative;
+  z-index: 1;
+}
+
+.scorecard-large {
+  display: flex;
+  align-items: stretch;
+  height: 160px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.758);
+  position: relative;
+  z-index: 1;
+  padding: 0 var(--large-scoreboard-x-padding) 0 var(--large-scoreboard-x-padding);
+}
+
+/* ── Shared panel base ── */
+.panel {
+  background: #ECDFC5;
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  gap: 10px
+}
+
+.large-panel {
+  width: 28vw;
+  overflow: visible;
+  align-items: flex-end;
+  padding-bottom: 2px;
+}
+
+/* Watermark crest behind each team panel */
+.panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.1;
+  pointer-events: none;
+  color: var(--muted-color);
+}
+
+/* ── Home team panel ── */
+.team-home {
+  position: relative;
+  color: var(--home-colour-2);
+}
+
+.team-home-background {
+  position: absolute;
+  inset: 0;
+  background: var(--home-colour-1);
+  z-index: 0;
+}
+
+.background-large {
+  margin: 0 calc(var(--large-scoreboard-x-padding) * -1) 0 calc(var(--large-scoreboard-x-padding) * -1);
+}
+
+.team-home::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0) 55%, rgb(0, 0, 0));
+  mix-blend-mode: soft-light;
+}
+
+/* ── Away team panel ── */
+.team-away {
+  position: relative;
+  justify-content: flex-end;
+  color: var(--away-colour-2);
+}
+
+.team-away-background {
+  position: absolute;
+  inset: 0;
+  background: var(--away-colour-1);
+  z-index: 0;
+}
+
+.team-away::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(90deg, rgb(0, 0, 0), rgba(0, 0, 0, 0) 55%);
+  mix-blend-mode: overlay;
+}
+
+.team-home > :not(.team-home-background),
+.team-away > :not(.team-away-background) {
+  position: relative;
+  z-index: 2;
+}
+
+
+/* ── Colour swatch (kit colour square) ── */
+.kit-swatch {
+  width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+}
+
+.kit-swatch.dun   { background: var(--home-colour-2); }
+.kit-swatch.mal    { background: var(--away-colour-2); }
+
+.kit-swatches {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  height: 100%;
+  width: 30px;
+}
+
+/* ── Team abbreviation ── */
+.team-abbr {
+  line-height: 1;
+  letter-spacing: 0.02em;
+  z-index: 1;
+  font-family: var(--font-secondary);
+  font-size: 85px;
+}
+
+.team-abbr-large {
+  line-height: 1;
+  letter-spacing: 0.02em;
+  z-index: 1;
+  font-family: var(--font-secondary);
+  font-size: 170px;
+}
+
+.team-details-row {
+  align-content: end;
+  width: 50%;
+}
+
+.home-details {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.away-details {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.team-name {
+  font-size: 50px;
+  overflow: hidden;
+  text-overflow: clip;
+  white-space: nowrap;
+  margin-top: -13px;
+}
+
+.team-name-home {
+  mask-image: linear-gradient(to right, rgba(0,0,0,1) 90%, rgba(0,0,0,0));
+}
+
+.team-name-away {
+  mask-image: linear-gradient(to left, rgba(0,0,0,1) 90%, rgba(0,0,0,0));
+  direction: rtl;
+}
+
+.scorers {
+  font-size: 20px;
+  font-style: italic;
+  width: 100%;
+  max-height: 87px;
+  overflow-y: scroll;
+  text-overflow: clip;
+  scrollbar-width: none;
+  align-content: flex-end;
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 15%, rgba(0,0,0,1) 85%, rgba(0,0,0,0));
+}
+
+.scorer {
+  display: block;
+}
+
+/* ── Centre score panel ── */
+.centre-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  background: #ECDFC5;
+  width: 250px;
+  position: relative;
+  overflow: visible;
+}
+
+/* Central league badge — sits above the panel, overlapping */
+.league-badge {
+  transform-origin: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) scale(1.15);
+  height: 100%;
+  z-index: 10;
+}
+
+.league-badge-large {
+  transform-origin: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) scale(1.35);
+  height: 100%;
+  z-index: 10;
+}
+
+.league-badge img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.league-badge-large img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Score row */
+.score-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.score {
+  font-size: 82px;
+  font-style: italic;
+  color: var(--text-color);
+  min-width: 32px;
+  text-align: center;
+}
+
+.score-large {
+  font-size: 76px;
+  font-style: italic;
+  color: var(--text-color);
+  min-width: 32px;
+  text-align: center;
+  transform: scale(4.5);
+  overflow: visible;
+  padding-bottom: 14px;
+  text-shadow: 0 0px 3px rgba(0, 0, 0, 0.669);
+}
+
+.score-sep {
+  font-size: 32px;
+  color: var(--muted-color);
+  line-height: 1;
+}
+
+.home-score {
+  margin-left: 100px;
+  margin-right: 70px;
+}
+
+.away-score {
+  margin-left: 70px;
+  margin-right: 100px;
+}
+
+.home-score-large {
+  margin-left: 10px;
+}
+
+.away-score-large {
+  margin-right: 10px;
+}
+
+/* ── Timer box (separate brown block) ── */
+.timer-box {
+  background: #ffffff;
+  height: 90px;
+  min-width: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.35);
+  position: relative;
+  z-index: 1;
+}
+
+.timer-box-large {
+  background: #ffffff;
+  height: 60px;
+  min-width: 190px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.35);
+  transform-origin: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) translateY(-160%);
+  top: 0%;
+  z-index: 10;
+  z-index: 1;
+}
+
+.timer-text {
+  font-size: 72px;
+  color: #000000;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+.timer-text-large {
+  font-size: 52px;
+  color: #000000;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+
+.ribbon-box {
+  position: absolute;
+  left: 5px;
+  right: 5px;
+  transform: skewX(-30deg);
+  transform-origin: center;
+  overflow: visible;
+  height: 100%;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10%;
+}
+
+.ribbon {
+  background: var(--ribbon-colour);
+  width: 100%;
+  height: 30%;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.35);
+}
+
