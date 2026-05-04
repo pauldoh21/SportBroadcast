@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Football Scorecard – Default</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap" rel="stylesheet" />
+  <link href="https://fonts.cdnfonts.com/css/haettenschweiler" rel="stylesheet" />
+  <style>
+    .penalties {
+      min-height: 200vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      font-family: var(--font-display);
+      color: var(--text-color);
+      padding: 16px;
+      overflow: visible;
+      top: 10px;
+
+      --font-display: 'DM Serif Text', serif;
+      --font-secondary: 'Haettenschweiler', sans-serif;
+      --text-color: #dcebf4;
+      --muted-color: rgba(0, 0, 0, 0.35);
+      --muted-text: rgba(0, 0, 0, 0.45);
+      --home-colour-1: #73AED8;
+      --home-colour-2: #f5f5f5;
+      --away-colour-1: #F5B53E;
+      --away-colour-2: #486745;
+      --ribbon-colour: #741920;
+      --pen-scored: #1aa11a;
+      --pen-missed: #f53e3e;
+    }
+
+    .broadcast {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      transform-origin: top left;
+      transform: translateX(20px) scale(1.25);
+      position: relative;
+      overflow: visible;
+      padding-inline: 40px;
+    }
+
+    /* ── Ribbon box (decorative skewed stripes behind everything) ── */
+    .ribbon-box {
+      position: absolute;
+      left: 5px;
+      right: 5px;
+      transform: skewX(-30deg);
+      transform-origin: center;
+      overflow: visible;
+      height: 50%;
+      z-index: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10%;
+    }
+
+    .ribbon {
+      background: var(--ribbon-colour);
+      width: 100%;
+      height: 30%;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+    }
+
+    .scorecard {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      height: 180px;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+      position: relative;
+      z-index: 1;
+    }
+
+    .panel {
+      background: #ECDFC5;
+      position: relative;
+      display: flex;
+      overflow: hidden;
+      gap: 20px;
+    }
+
+    /* ── Home team panel ── */
+    .team-home {
+      position: relative;
+      color: var(--home-colour-2);
+    }
+
+    .team-home-background {
+      position: absolute;
+      inset: 0;
+      background: var(--home-colour-1);
+      z-index: 0;
+    }
+
+    .team-home::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background: linear-gradient(90deg, rgba(0, 0, 0, 0) 55%, rgb(0, 0, 0));
+      mix-blend-mode: soft-light;
+    }
+
+    /* ── Away team panel ── */
+    .team-away {
+      position: relative;
+      justify-content: flex-end;
+      color: var(--away-colour-2);
+    }
+
+    .team-away-background {
+      position: absolute;
+      inset: 0;
+      background: var(--away-colour-1);
+      z-index: 0;
+    }
+
+    .team-away::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background: linear-gradient(270deg, rgb(0, 0, 0), rgba(0, 0, 0, 0) 55%);
+      mix-blend-mode: overlay;
+    }
+
+    /* Ensure content sits above the absolute background divs */
+    .team-home> :not(.team-home-background),
+    .team-away> :not(.team-away-background) {
+      position: relative;
+      z-index: 2;
+    }
+
+    .abbreviation-box {
+      line-height: 1;
+      letter-spacing: 0.02em;
+      z-index: 1;
+      font-family: var(--font-secondary);
+      font-size: 85px;
+      display: flex;
+      align-content: center;
+      justify-content: center;
+      width: 150px;
+    }
+
+    .pens-row {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .pen {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 4px solid var(--text-color);
+      background: var(--muted-color);
+    }
+
+    .pen-scored {
+      background: var(--pen-scored);
+    }
+
+    .pen-missed {
+      background: var(--pen-missed);
+    }
+
+    .score-box {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100px;
+      background: #ffffff;
+    }
+
+    .score {
+      font-size: 82px;
+      font-style: italic;
+      color: #000000;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="penalties">
+
+    <div class="broadcast">
+      <div class="ribbon-box">
+        <div class="ribbon"></div>
+        <div class="ribbon"></div>
+      </div>
+
+
+      <div class="scorecard">
+
+        <div class="panel team-home">
+          <div class="team-home-background"></div>
+          <div class="abbreviation-box">
+            <div class="abbreviation">DUN</div>
+          </div>
+          <div class="pens-row">
+            <div class="pen pen-scored"></div>
+            <div class="pen pen-missed"></div>
+            <div class="pen"></div>
+            <div class="pen"></div>
+            <div class="pen"></div>
+          </div>
+          <div class="score-box">
+            <div class="score">1</div>
+          </div>
+        </div>
+        <div class="panel team-away">
+          <div class="team-away-background"></div>
+          <div class="abbreviation-box">
+            <div class="abbreviation">MAL</div>
+          </div>
+          <div class="pens-row">
+            <div class="pen pen-scored"></div>
+            <div class="pen pen-missed"></div>
+            <div class="pen"></div>
+            <div class="pen"></div>
+            <div class="pen"></div>
+          </div>
+          <div class="score-box">
+            <div class="score">1</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  </div>
+
+</body>
+
+</html>
