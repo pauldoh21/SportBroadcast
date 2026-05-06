@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import gsap from "gsap";
 import { useSocket } from "~/composables/useSocket";
-const { register } = useSocket();
+const { register, publishLocal } = useSocket();
 
 const store = reactive({
   visible: false,
@@ -14,15 +14,19 @@ const ref = useTemplateRef("ref");
 
 register(Overlays.MatchScorecard, (data) => {
   if (data.action === "play") play(data);
-  if (data.action === "stop") stop();
+  if (data.action === "stop") return stop();
 });
 
-function play(data: any) {
+async function play(data: any) {
+  await publishLocal({
+    overlay: Overlays.Penalties,
+    action: "stop",
+  });
   store.goals.dun = data.goals?.dun ?? 0;
   store.goals.mal = data.goals?.mal ?? 0;
   store.visible = true;
   nextTick(() => {
-    if (ref) {
+    if (ref.value) {
       gsap.fromTo(
         ref.value,
         { opacity: 0, y: -10 },
@@ -35,11 +39,17 @@ function play(data: any) {
       );
     }
   });
-};
+}
 
 function stop() {
-  nextTick(() => {
-    if (ref) {
+  return new Promise<void>((resolve) => {
+    nextTick(() => {
+      if (!ref.value) {
+        store.visible = false;
+        resolve();
+        return;
+      }
+
       gsap.fromTo(
         ref.value,
         { opacity: 1, y: 0 },
@@ -48,17 +58,20 @@ function stop() {
           y: -10,
           duration: 0.5,
           ease: "power2.out",
-          onComplete: () => (store.visible = false),
+          onComplete: () => {
+            store.visible = false;
+            resolve();
+          },
         },
       );
-    }
+    });
   });
-};
+}
 </script>
 
 <template>
   <template v-if="store.visible === true">
-    <section class="main" ref="ref">
+    <section class="matchScorecard" ref="ref">
       <div class="broadcast">
         <div class="ribbon-box">
           <div class="ribbon"></div>
@@ -115,7 +128,7 @@ function stop() {
   padding: 0;
 }
 
-.main {
+.matchScorecard {
   min-height: 100vh;
   display: flex;
   align-items: flex-start;

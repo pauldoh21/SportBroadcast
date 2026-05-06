@@ -1,5 +1,5 @@
 <template>
+  <OverlayPenalties />
   <OverlayMatchScorecard />
   <OverlayBigMatchScorecard />
-  <OverlayPenalties />
 </template>

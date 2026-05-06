@@ -8,6 +8,7 @@ export default defineWebSocketHandler({
 
     message(peer, msg) {
         console.log(`message=${msg.text()}`)
+        peer.send(msg.text())
         peer.publish(channel, msg.text())
     },
 
