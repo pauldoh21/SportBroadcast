@@ -1,5 +1,6 @@
 export const Overlays = {
     MatchScorecard: 'matchScorecard',
+    BigMatchScorecard: 'bigMatchScorecard',
     Penalties: "penalties",
     Goal: "goal"
 } as const

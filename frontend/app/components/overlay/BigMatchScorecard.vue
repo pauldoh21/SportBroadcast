@@ -8,7 +8,7 @@ const store = reactive({
 });
 const ref = useTemplateRef("ref");
 
-register(Overlays.Penalties, (data) => {
+register(Overlays.BigMatchScorecard, (data) => {
   if (data.action === "play") play(data);
   if (data.action === "stop") stop();
 });
@@ -52,15 +52,15 @@ function stop() {
 
 <template>
   <template v-if="store.visible === true">
-    <section class="penalties" ref="ref">
-      <h1>Data Driven Component (Penalties)</h1>
+    <section class="bigMatchScorecard" ref="ref">
+      <h1>Data Driven Component (Big Match Scorecard)</h1>
       <!-- HTML Here -->
     </section>
   </template>
 </template>
 
 <style scoped>
-.penalties {
+.bigMatchScorecard {
   /* CSS Here */
 }
 </style>
