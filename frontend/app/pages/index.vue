@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import data from "~/assets/data.json";
-import FormationEditor from "~/components/formation/FormationEditor.client.vue";
 
 const { publish } = useSocket();
 
