@@ -8,7 +8,7 @@ const store = reactive({
 });
 const overlay = useTemplateRef("overlay");
 
-register(Overlays.BigMatchScorecard, (data) => {
+register(Overlays.Formation, (data) => {
   if (data.action === "play") play(data);
   if (data.action === "stop") stop();
 });
@@ -53,7 +53,7 @@ function stop() {
 <template>
   <template v-if="store.visible === true">
     <section class="overlay" ref="overlay">
-      <h1>Data Driven Component (Big Match Scorecard)</h1>
+      <h1>Data Driven Component (Formation)</h1>
       <!-- HTML Here -->
     </section>
   </template>

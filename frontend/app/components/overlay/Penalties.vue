@@ -6,7 +6,7 @@ const { register, publishLocal } = useSocket();
 const store = reactive({
   visible: false,
 });
-const ref = useTemplateRef("ref");
+const overlay = useTemplateRef("overlay");
 
 register(Overlays.Penalties, (data) => {
   if (data.action === "play") play(data);
@@ -21,9 +21,9 @@ async function play(data: any) {
 
   store.visible = true;
   nextTick(() => {
-    if (ref.value) {
+    if (overlay.value) {
       gsap.fromTo(
-        ref.value,
+        overlay.value,
         { opacity: 0, y: -10 },
         {
           opacity: 1,
@@ -39,14 +39,14 @@ async function play(data: any) {
 function stop() {
   return new Promise<void>((resolve) => {
     nextTick(() => {
-      if (!ref.value) {
+      if (!overlay.value) {
         store.visible = false;
         resolve();
         return;
       }
 
       gsap.fromTo(
-        ref.value,
+        overlay.value,
         { opacity: 1, y: 0 },
         {
           opacity: 0,
@@ -66,7 +66,7 @@ function stop() {
 
 <template>
   <template v-if="store.visible === true">
-    <div class="penalties" ref="ref">
+    <div class="overlay" ref="overlay">
       <div class="broadcast">
         <div class="ribbon-box">
           <div class="ribbon"></div>
@@ -113,7 +113,7 @@ function stop() {
 </template>
 
 <style scoped>
-.penalties {
+.overlay {
   min-height: 200vh;
   display: flex;
   align-items: flex-start;

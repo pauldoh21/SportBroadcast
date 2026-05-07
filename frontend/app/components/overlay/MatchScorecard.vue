@@ -175,7 +175,7 @@ function stop() {
 
 <template>
   <template v-if="store.visible === true">
-    <section class="matchScorecard" ref="overlay">
+    <section class="overlay" ref="overlay">
       <div class="broadcast">
         <div class="ribbon-box" ref="ribbonBox">
           <div class="ribbon"></div>
@@ -236,7 +236,7 @@ function stop() {
   padding: 0;
 }
 
-.matchScorecard {
+.overlay {
   min-height: 100vh;
   display: flex;
   align-items: flex-start;

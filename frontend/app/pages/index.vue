@@ -38,6 +38,9 @@ function onStop(overlay: Overlay) {
         <br />
         <button @click="onPlay(Overlays.Penalties)">Play Penalties</button>
         <button @click="onStop(Overlays.Penalties)">Stop Penalties</button>
+        <br />
+        <button @click="onPlay(Overlays.Formation)">Play Formation</button>
+        <button @click="onStop(Overlays.Formation)">Stop Formation</button>
       </div>
       <FormationEditor :team="data.teams.dunterlie_dynamos" />
       <FormationEditor :team="data.teams.ac_malones" />
