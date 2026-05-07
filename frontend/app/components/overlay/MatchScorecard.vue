@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import gsap from "gsap";
 import { useSocket } from "~/composables/useSocket";
+
 const { register, publishLocal } = useSocket();
 
 const store = reactive({
@@ -10,12 +11,127 @@ const store = reactive({
     mal: 0,
   },
 });
-const ref = useTemplateRef("ref");
+const overlay = useTemplateRef("overlay");
+const ribbonBox = useTemplateRef("ribbonBox");
+const homePanel = useTemplateRef("homePanel");
+const awayPanel = useTemplateRef("awayPanel");
+const homeScore = useTemplateRef("homeScore");
+const awayScore = useTemplateRef("awayScore");
+const timerBox = useTemplateRef("timerBox");
+const leagueBadge = useTemplateRef("leagueBadge");
+
+let animationTimeline: gsap.core.Timeline | null = null;
 
 register(Overlays.MatchScorecard, (data) => {
   if (data.action === "play") play(data);
   if (data.action === "stop") return stop();
 });
+
+function animateRibbon(timeline: gsap.core.Timeline) {
+  if (ribbonBox.value) {
+    timeline.fromTo(
+      ribbonBox.value,
+      { opacity: 0, x: -50 },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 0.6,
+        ease: "back.out(1.7)",
+      },
+      0,
+    );
+  }
+}
+
+function animateLeagueBadge(timeline: gsap.core.Timeline) {
+  if (leagueBadge.value) {
+    timeline.fromTo(
+      leagueBadge.value,
+      { opacity: 0 },
+      {
+        opacity: 1,
+        duration: 0.5,
+        ease: "power2.out",
+      },
+      0.3,
+    );
+  }
+}
+
+function animateHomePanel(timeline: gsap.core.Timeline) {
+  if (homePanel.value) {
+    timeline.fromTo(
+      homePanel.value,
+      { opacity: 0, x: -40 },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 0.6,
+        ease: "power2.out",
+      },
+      0.4,
+    );
+  }
+  if (homeScore.value) {
+    timeline.fromTo(
+      homeScore.value,
+      { opacity: 0, scale: 0 },
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 0.5,
+        ease: "back.out(1.5)",
+      },
+      0.75,
+    );
+  }
+}
+
+function animateAwayPanel(timeline: gsap.core.Timeline) {
+  if (awayPanel.value) {
+    timeline.fromTo(
+      awayPanel.value,
+      { opacity: 0, x: 40 },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 0.6,
+        ease: "power2.out",
+      },
+      0.55,
+    );
+  }
+  if (awayScore.value) {
+    timeline.fromTo(
+      awayScore.value,
+      { opacity: 0, scale: 0 },
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 0.5,
+        ease: "back.out(1.5)",
+      },
+      0.85,
+    );
+  }
+}
+
+function animateTimer(timeline: gsap.core.Timeline) {
+  if (timerBox.value) {
+    timeline.fromTo(
+      timerBox.value,
+      { opacity: 0, scale: 0.8, y: 20 },
+      {
+        opacity: 1,
+        scale: 1,
+        y: 0,
+        duration: 0.6,
+        ease: "power2.out",
+      },
+      0.5,
+    );
+  }
+}
 
 async function play(data: any) {
   await publishLocal({
@@ -26,17 +142,13 @@ async function play(data: any) {
   store.goals.mal = data.goals?.mal ?? 0;
   store.visible = true;
   nextTick(() => {
-    if (ref.value) {
-      gsap.fromTo(
-        ref.value,
-        { opacity: 0, y: -10 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.5,
-          ease: "power2.out",
-        },
-      );
+    if (overlay.value) {
+      animationTimeline = gsap.timeline();
+      animateRibbon(animationTimeline);
+      animateLeagueBadge(animationTimeline);
+      animateHomePanel(animationTimeline);
+      animateAwayPanel(animationTimeline);
+      animateTimer(animationTimeline);
     }
   });
 }
@@ -44,26 +156,18 @@ async function play(data: any) {
 function stop() {
   return new Promise<void>((resolve) => {
     nextTick(() => {
-      if (!ref.value) {
+      if (!animationTimeline || animationTimeline.progress() === 0) {
         store.visible = false;
         resolve();
         return;
       }
 
-      gsap.fromTo(
-        ref.value,
-        { opacity: 1, y: 0 },
-        {
-          opacity: 0,
-          y: -10,
-          duration: 0.5,
-          ease: "power2.out",
-          onComplete: () => {
-            store.visible = false;
-            resolve();
-          },
-        },
-      );
+      animationTimeline.reverse();
+
+      gsap.delayedCall(animationTimeline.duration(), () => {
+        store.visible = false;
+        resolve();
+      });
     });
   });
 }
@@ -71,9 +175,9 @@ function stop() {
 
 <template>
   <template v-if="store.visible === true">
-    <section class="matchScorecard" ref="ref">
+    <section class="matchScorecard" ref="overlay">
       <div class="broadcast">
-        <div class="ribbon-box">
+        <div class="ribbon-box" ref="ribbonBox">
           <div class="ribbon"></div>
           <div class="ribbon"></div>
         </div>
@@ -81,7 +185,7 @@ function stop() {
         <!-- ── Main scorecard ── -->
         <div class="scorecard">
           <!-- Home: Dunterlie Dynamos -->
-          <div class="panel team-home">
+          <div class="panel team-home" ref="homePanel">
             <div class="team-home-background"></div>
             <div class="kit-swatches">
               <div class="kit-swatch dun"></div>
@@ -89,19 +193,23 @@ function stop() {
             </div>
             <span class="team-abbr">DUN</span>
             <div class="score-row">
-              <div class="score home-score">{{ store.goals.dun }}</div>
+              <div class="score home-score" ref="homeScore">
+                {{ store.goals.dun }}
+              </div>
             </div>
           </div>
 
-          <div class="league-badge">
+          <div class="league-badge" ref="leagueBadge">
             <img src="../../assets/jmBall.png" alt="League Badge" />
           </div>
 
           <!-- Away: AC Malones -->
-          <div class="panel team-away">
+          <div class="panel team-away" ref="awayPanel">
             <div class="team-away-background"></div>
             <div class="score-row">
-              <div class="score away-score">{{ store.goals.mal }}</div>
+              <div class="score away-score" ref="awayScore">
+                {{ store.goals.mal }}
+              </div>
             </div>
             <span class="team-abbr">MAL</span>
             <div class="kit-swatches">
@@ -111,7 +219,7 @@ function stop() {
         </div>
 
         <!-- ── Timer box ── -->
-        <div class="timer-box">
+        <div class="timer-box" ref="timerBox">
           <span class="timer-text">55:00</span>
         </div>
       </div>
