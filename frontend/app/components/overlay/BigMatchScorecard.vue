@@ -114,16 +114,6 @@ function stop() {
 
 <style scoped>
 .overlay {
-    --font-display: 'DM Serif Text', serif;
-    --font-secondary: 'Haettenschweiler', sans-serif;
-    --text-color: #dcebf4;
-    --muted-color: rgba(0,0,0,0.35);
-    --muted-text: rgba(0,0,0,0.45);
-    --home-colour-1: #73AED8;
-    --home-colour-2: #f5f5f5;
-    --away-colour-1: #F5B53E;
-    --away-colour-2: #486745;
-    --ribbon-colour: #741920;
     --large-scoreboard-x-padding: 40px;
 
     min-height: 100vh;
@@ -152,7 +142,7 @@ function stop() {
       padding-inline: 90px;
       z-index: 5;
       transform-origin: bottom center;
-      transform: scale(1.2);
+      transform: scale(1.5);
     }
 
     .ribbon-box {

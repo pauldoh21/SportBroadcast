@@ -36,6 +36,9 @@ function onStop(overlay: Overlay) {
           Stop Big MatchScorecard
         </button>
         <br />
+        <button @click="onPlay(Overlays.Substitutions)">Play Substitutions</button>
+        <button @click="onStop(Overlays.Substitutions)">Stop Substitutions</button>
+        <br />
         <button @click="onPlay(Overlays.Penalties)">Play Penalties</button>
         <button @click="onStop(Overlays.Penalties)">Stop Penalties</button>
         <br />

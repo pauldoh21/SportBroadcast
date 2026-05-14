@@ -13,7 +13,7 @@
   --home-colour-2: #f5f5f5;
   --away-colour-1: #f5b53e;
   --away-colour-2: #486745;
-  --ribbon-colour: #b1303a;
+  --ribbon-colour: #741920;
   --pen-scored: #1aa11a;
   --pen-missed: #f53e3e;
   --large-scoreboard-x-padding: 40px;

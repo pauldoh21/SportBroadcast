@@ -1,6 +1,7 @@
 export const Overlays = {
   MatchScorecard: "matchScorecard",
   BigMatchScorecard: "bigMatchScorecard",
+  Substitutions: "substitutions",
   Formation: "formation",
   Penalties: "penalties",
   Goal: "goal",

@@ -133,7 +133,7 @@ function stop() {
                     <div class="manager">
                         <div class="manager-heading">MANAGER</div>
                         <div class="manager-picture">
-                            <img src="../collins.png" alt="manager pic">
+                            <img src="../../assets/collins.png" alt="manager pic" />
                         </div>
                         <div class="manager-name">Anthony Collins</div>
                     </div>
@@ -151,6 +151,10 @@ function stop() {
                             <div class="sub">16: Jane Smith</div>
                         </div>
                     </div>
+
+                    <div class="sponsor">
+                        <img src="../../assets/refuweegeeLogoWhite.png" alt="sponsor logo" />
+                    </div>
                 </div>
 
             </div>
@@ -163,9 +167,6 @@ function stop() {
 </template>
 
 <style scoped>
-.overlay {
-  /* CSS Here */
-}
 
 .shirt-template {
             --primary-colour: #73AED8;
@@ -182,14 +183,8 @@ function stop() {
             min-height: 100vh;
             position: relative;
 
-            --font-display: 'DM Serif Text', serif;
-            --font-secondary: 'Haettenschweiler', sans-serif;
-            --text-color: #dcebf4;
-            --muted-color: rgba(0, 0, 0, 0.35);
-            --muted-text: rgba(0, 0, 0, 0.45);
             --primary-colour: #73AED8;
             --secondary-colour: #f5f5f5;
-            --ribbon-colour: #741920;
         }
 
         .content-wrapper {
@@ -364,5 +359,16 @@ function stop() {
             font-size: 1.1em;
             font-style: italic;
             line-height: 0.95;
+        }
+
+        .sponsor {
+            padding-top: 130px;
+            display: flex;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .sponsor img {
+            width: 80%;
         }
 </style>
